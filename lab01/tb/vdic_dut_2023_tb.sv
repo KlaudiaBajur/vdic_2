@@ -87,7 +87,9 @@ initial begin
     forever begin
         @(posedge clk) clk_counter++;
         if(clk_counter % 1000 == 0) begin
+	        `ifdef DEBUG
             $display("%0t Clock cycles elapsed: %0d", $time, clk_counter);
+	        `endif
         end
     end
 end
@@ -120,7 +122,7 @@ initial begin : tester
 	logic signed [31:0] expected;
     reset();        
     repeat (1000) begin : tester_main_blk
-        @(posedge clk)
+        @(negedge clk)
         //valid arg_a valid arg_b valid arg_a_parity valid arg_b_parity
         	arg_a = get_data();
         	arg_b = get_data();
@@ -130,16 +132,17 @@ initial begin : tester
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
-		    	$display("Testing arg_parity_error flag, expected value: %d  received: %d", expected, result);
-		    end
-        	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected) begin
+	    	expected = get_expected(arg_a, arg_b);
+        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+        		`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+	        	`endif
             end
-            else begin
+        	else begin
+	        	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("1 Expected : %d  received: %d", expected, result);
+	        	`endif
                 test_result = TEST_FAILED;
             end
             reset();
@@ -147,22 +150,28 @@ initial begin : tester
             req   = 1'b1;
             arg_a_parity = ~^arg_a;
 	    	arg_b_parity = ^arg_b;
-	    	wait(ack); //wait for high ack to move to next steps
+	    	wait(ack); //wait for high ack to move to next steps  //while(!a && !b) @(negedge clk) <-change it in future code 
+	    	req = 0;
 	    	wait(result_rdy);
-            req = 0;
 	    	if(arg_parity_error) begin
 			    	if(result == 0) begin
+				    	`ifdef DEBUG
 				    	$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+				    	`endif
 			    	end
 			    	else begin
+				    	`ifdef DEBUG
             			$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                			$display("2 Expected: %d  received: %d", expected, result);
+				    	`endif
                 		test_result = TEST_FAILED;
             		end
 		    end
-            else begin
+	    	else begin
+		    	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("Expected: %d  received: %d", expected, result);
+		    	`endif
                 test_result = TEST_FAILED;
             end
             reset();
@@ -171,21 +180,27 @@ initial begin : tester
             arg_a_parity = ^arg_a;
 	    	arg_b_parity = ^~arg_b;
 	    	wait(ack); //wait for high ack to move to next steps
+	    	req = 0;
 	    	wait(result_rdy);
-            req = 0;
 	    	if(arg_parity_error) begin
 			    if(result == 0) begin
+				    `ifdef DEBUG
 				    $display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+				    `endif
 			    end
 			    else begin
+				    `ifdef DEBUG
             		$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                		$display("3 Expected: %d  received: %d", expected, result);
+				    `endif
                 	test_result = TEST_FAILED;
             	end
 		    end
-            else begin
+	    	else begin
+		    	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("4 Expected: %d  received: %d", expected, result);
+		    	`endif
                 test_result = TEST_FAILED;
             end  
             reset();
@@ -194,21 +209,27 @@ initial begin : tester
             arg_a_parity = ~^arg_a;
 	    	arg_b_parity = ~^arg_b;
 	    	wait(ack); //wait for high ack to move to next steps
+	    	req = 0;
 	    	wait(result_rdy);
-            req = 0;
 	    	if(arg_parity_error) begin
 			    	if(result == 0) begin
+				    	`ifdef DEBUG
 				    	$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+				    	`endif
 			    	end
 			    	else begin
+				    	`ifdef DEBUG
             			$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                			$display("5 Expected: %d  received: %d", expected, result);
+				    	`endif
                 		test_result = TEST_FAILED;
             		end
 		    end
-            else begin
+	    	else begin
+		    	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("6 Expected: %d  received: %d", expected, result);
+		    	`endif
                 test_result = TEST_FAILED;
             end
             reset();
@@ -221,16 +242,17 @@ initial begin : tester
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
-		    	$display("Testing arg_parity_error flag, expected value: %d  received: %d", expected, result);
-		    end
         	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected) begin
+        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+	        	`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+	        	`endif
             end
-            else begin
+        	else begin
+	        	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("7 Expected : %d  received: %d", expected, result);
+	        	`endif
                 test_result = TEST_FAILED;
             end
             reset();
@@ -243,16 +265,17 @@ initial begin : tester
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
-		    	$display("Testing arg_parity_error flag, expected value: %d  received: %d", expected, result);
-		    end
         	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected) begin
+        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+	        	`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+	        	`endif
             end
-            else begin
+        	else begin
+	        	`ifdef DEBUG
             	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
                	$display("8 Expected : %d  received: %d", expected, result);
+	        	`endif
                 test_result = TEST_FAILED;
             end
             reset();
