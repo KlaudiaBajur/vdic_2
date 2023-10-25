@@ -108,19 +108,21 @@ function logic signed [15:0] get_data();
     zero_ones = 3'($random);
 
     if (zero_ones == 3'b000)
-        return 16'sh8FFF;
+        return 16'sh8000; 
     else if (zero_ones == 3'b111)
-        return 16'sh7FFF;
+        return 16'sh7FFF;  
     else
         return 16'($random);
 endfunction : get_data
+
 
 //------------------------
 // Tester main
 
 initial begin : tester
-	logic signed [31:0] expected;
-    reset();        
+	logic signed [31:0] expected;   
+	logic expected_arg_parity_error;
+	reset();
     repeat (1000) begin : tester_main_blk
         @(negedge clk)
         //valid arg_a valid arg_b valid arg_a_parity valid arg_b_parity
@@ -132,8 +134,8 @@ initial begin : tester
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-	    	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+	    	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
+        	if(result === expected && result_parity ===^expected && arg_parity_error===expected_arg_parity_error) begin
         		`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
 	        	`endif
@@ -145,15 +147,17 @@ initial begin : tester
 	        	`endif
                 test_result = TEST_FAILED;
             end
-            reset();
+            //reset();
+        @(negedge clk)
             //valid arg_a valid arg_b invalid arg_a_parity valid arg_b_parity
             req   = 1'b1;
             arg_a_parity = ~^arg_a;
 	    	arg_b_parity = ^arg_b;
+        	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
 	    	wait(ack); //wait for high ack to move to next steps  //while(!a && !b) @(negedge clk) <-change it in future code 
 	    	req = 0;
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
+	    	if(arg_parity_error === expected_arg_parity_error) begin
 			    	if(result == 0) begin
 				    	`ifdef DEBUG
 				    	$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
@@ -174,15 +178,17 @@ initial begin : tester
 		    	`endif
                 test_result = TEST_FAILED;
             end
-            reset();
+            //reset();
+	    @(negedge clk)
             //valid arg_a valid arg_b valid arg_a_parity invalid arg_b_parity
             req   = 1'b1;
             arg_a_parity = ^arg_a;
 	    	arg_b_parity = ^~arg_b;
+	    	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
+	    	if(arg_parity_error === expected_arg_parity_error) begin
 			    if(result == 0) begin
 				    `ifdef DEBUG
 				    $display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
@@ -203,15 +209,17 @@ initial begin : tester
 		    	`endif
                 test_result = TEST_FAILED;
             end  
-            reset();
+            //reset();
+	    @(negedge clk)
             //valid arg_a valid arg_b invalid arg_a_parity invalid arg_b_parity
             req   = 1'b1;
             arg_a_parity = ~^arg_a;
 	    	arg_b_parity = ~^arg_b;
+	    	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
 	    	wait(ack); //wait for high ack to move to next steps
-	    	req = 0;
+	    	req = 0; //negative egde
 	    	wait(result_rdy);
-	    	if(arg_parity_error) begin
+	    	if(arg_parity_error === expected_arg_parity_error) begin
 			    	if(result == 0) begin
 				    	`ifdef DEBUG
 				    	$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
@@ -232,18 +240,19 @@ initial begin : tester
 		    	`endif
                 test_result = TEST_FAILED;
             end
-            reset();
+            //reset();
+	    @(negedge clk)
             // tests for marginal values from range 16'sh8FFF
             req   = 1'b1;
-            arg_a = 16'sh8FFF;
-        	arg_b = 16'sh8FFF;
+            arg_a = 16'sh8000;
+        	arg_b = 16'sh8000;
 	    	arg_a_parity = ^arg_a; 
 	    	arg_b_parity = ^arg_b;
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-        	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+	    	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
+        	if(result === expected && result_parity ===^expected && arg_parity_error===expected_arg_parity_error) begin
 	        	`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
 	        	`endif
@@ -255,7 +264,8 @@ initial begin : tester
 	        	`endif
                 test_result = TEST_FAILED;
             end
-            reset();
+            //reset();
+        @(negedge clk)
             // tests for marginal values from range 16'sh7FFF
             arg_a = 16'sh7FFF;
         	arg_b = 16'sh7FFF;
@@ -265,8 +275,31 @@ initial begin : tester
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
-        	expected = get_expected(arg_a, arg_b);
-        	if(result == expected && result_parity ==^expected && arg_parity_error==0) begin
+        	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
+        	if(result === expected && result_parity ===^expected && arg_parity_error===expected_arg_parity_error) begin
+	        	`ifdef DEBUG
+        		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+	        	`endif
+            end
+        	else begin
+	        	`ifdef DEBUG
+            	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+               	$display("8 Expected : %d  received: %d", expected, result);
+	        	`endif
+                test_result = TEST_FAILED;
+        	end
+        @(negedge clk)
+            // tests for marginal values from range 16'sh7FFF
+            arg_a = 16'sh8000;
+        	arg_b = 16'sh7FFF;
+        	req   = 1'b1;
+	    	arg_a_parity = ^arg_a; 
+	    	arg_b_parity = ^arg_b;
+	    	wait(ack); //wait for high ack to move to next steps
+	    	req = 0;
+	    	wait(result_rdy);
+        	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
+        	if(result === expected && result_parity ===^expected && arg_parity_error===expected_arg_parity_error) begin
 	        	`ifdef DEBUG
         		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
 	        	`endif
@@ -278,7 +311,31 @@ initial begin : tester
 	        	`endif
                 test_result = TEST_FAILED;
             end
-            reset();
+            //reset();
+        @(negedge clk)
+            // tests for marginal values from range 16'sh7FFF
+            arg_a = 16'sh7FFF;
+        	arg_b = 16'sh8000;
+        	req   = 1'b1;
+	    	arg_a_parity = ^arg_a; 
+	    	arg_b_parity = ^arg_b;
+	    	wait(ack); //wait for high ack to move to next steps
+	    	req = 0;
+	    	wait(result_rdy);
+        	{expected, expected_arg_parity_error} = get_expected(arg_a, arg_b, arg_a_parity, arg_b_parity);
+        	if(result === expected && result_parity ===^expected && arg_parity_error===expected_arg_parity_error) begin
+	        	`ifdef DEBUG
+        		$display("Test passed for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+	        	`endif
+            end
+        	else begin
+	        	`ifdef DEBUG
+            	$display("Test FAILED for arg_a=%0d arg_b=%0d", arg_a, arg_b);
+               	$display("8 Expected : %d  received: %d", expected, result);
+	        	`endif
+                test_result = TEST_FAILED;
+            end
+            //reset();
     end
     $finish;
 end : tester
@@ -298,15 +355,27 @@ endtask : reset
 // calculate expected result
 //------------------------------------------------------------------------------
 
-function logic [31:0] get_expected(
-        logic signed [15:0] arg_a,
-        logic signed [15:0] arg_b
-    );
-    logic signed [31:0] ret;
-    ret = arg_a * arg_b;
-    return(ret);
-endfunction : get_expected
 
+function logic signed [32:0] get_expected(
+	logic signed [15:0] arg_a,
+	logic signed [15:0] arg_b,
+	logic  				arg_a_parity,
+	logic  				arg_b_parity
+	);
+	logic  				arg_parity_error;
+	logic  				result_parity;
+	logic signed [31:0] ret;
+	
+	ret= arg_a*arg_b;
+	if(arg_a_parity != ^arg_a || arg_b_parity != ^arg_b || result_parity != ^ret) begin
+		arg_parity_error = 1'b1;
+		ret = 0;
+	end
+	else begin
+		arg_parity_error = 0;
+	end
+	return{ret, arg_parity_error};
+endfunction : get_expected
 //------------------------------------------------------------------------------
 // Temporary. The scoreboard will be later used for checking the data
 final begin : finish_of_the_test

@@ -1,0 +1,103 @@
+Operating system: Linux
+                  0.0.0 Linux 3.10.0-1160.99.1.el7.x86_64 #1 SMP Wed Sep 13 14:19:20 UTC 2023 x86_64
+CPU: x86
+     GenuineIntel family 6 model 60 stepping 3
+     1 CPU
+
+GPU: UNKNOWN
+
+Crash reason:  DUMP_REQUESTED
+Crash address: 0xf72eb37d
+Process uptime: not available
+
+Thread 0 (crashed)
+ 0  libcbreakpad.so + 0x2e37d
+    eip = 0xf72eb37d   esp = 0x0083849e   ebp = 0xf6f7d688   ebx = 0xf731e000
+    esi = 0xf6f7d738   edi = 0xf6f7d6b8   eax = 0x00000000   ecx = 0x00000001
+    edx = 0x00000000   efl = 0xf72c5c20
+    Found by: given as instruction pointer in context
+ 1  libcbreakpad.so + 0x2c665
+    eip = 0xf72e9665   esp = 0xf6f7d690   ebp = 0xf6f7d7e8
+    Found by: previous frame's frame pointer
+ 2  xmsim + 0x13489d0
+    eip = 0x093909d0   esp = 0xf6f7d7f0   ebp = 0xf6f7dac8
+    Found by: previous frame's frame pointer
+ 3  xmsim + 0x632c93
+    eip = 0x0867ac93   esp = 0xf6f7dad0   ebp = 0xf6f7daf8
+    Found by: previous frame's frame pointer
+ 4  linux-gate.so + 0x410
+    eip = 0xf776d410   esp = 0xf6f7db00   ebp = 0x0ba752b8
+    Found by: previous frame's frame pointer
+
+Loaded modules:
+0x08048000 - 0x0aaaafff  xmsim  ???  (main)  (WARNING: No symbols, xmsim, FB77C94B2A354310E8927E1F68C53F1B0)
+0x0aaac000 - 0x0ac1ffff  xmsim  ???
+0xf64a7000 - 0xf64bcfff  libz_sh.so  ???
+0xf64bd000 - 0xf64bffff  libz_sh.so  ???
+0xf64c0000 - 0xf6a4afff  libucis.so  ???
+0xf6a4b000 - 0xf6a86fff  libucis.so  ???
+0xf6b1a000 - 0xf6b3afff  libml_uvm.so  ???
+0xf6fc7000 - 0xf71a2fff  libStrapNC.so  ???
+0xf71ad000 - 0xf7236fff  libdcapi.so  ???
+0xf7237000 - 0xf7240fff  libdcapi.so  ???
+0xf7242000 - 0xf725afff  libnsl-2.17.so  ???
+0xf725d000 - 0xf7268fff  libnss_nis-2.17.so  ???
+0xf7269000 - 0xf7275fff  libnss_files-2.17.so  ???
+0xf72bd000 - 0xf731ffff  libcbreakpad.so  ???  (WARNING: No symbols, libcbreakpad.so, 3612D8A3E98D657A4EC482474ABD6E880)
+0xf732a000 - 0xf74edfff  libc-2.17.so  ???
+0xf74ee000 - 0xf74f1fff  libc-2.17.so  ???
+0xf74f5000 - 0xf7511fff  libgcc_s.so.1  ???
+0xf7512000 - 0xf76e6fff  libstdc++.so.6.0.28  ???
+0xf76ea000 - 0xf772bfff  libm-2.17.so  ???
+0xf772c000 - 0xf7730fff  libdl-2.17.so  ???
+0xf7731000 - 0xf7749fff  libpthread-2.17.so  ???
+0xf774e000 - 0xf7751fff  libxdt.so  ???
+0xf7752000 - 0xf7754fff  libxdt.so  ???
+0xf7757000 - 0xf7761fff  libuvmpli.so  ???
+0xf7762000 - 0xf776bfff  libunicovdirmgr.so  ???
+0xf776d000 - 0xf776dfff  linux-gate.so  ???  (WARNING: No symbols, linux-gate.so, D16C0C99B478EC84532B08275EBC8D500)
+0xf776e000 - 0xf7791fff  ld-2.17.so  ???
+
+******BACKTRACE*****
+vserror [0x93909d0]
+serror [0x9391e6a]
+sv_seghandler_aux [0x867a6af]
+sv_seghandler [0x867ac93]
+sss_load_trg_data [0x8701f6b]
+sss_trdrv_type [0x86f7be0]
+ssl_net_type [0x8807ad2]
+cov_tog_isvalid_net [0x8e460ba]
+cov_tog_dump_vlog_helper [0x8e5178d]
+cov_tog_dump [0x8e53795]
+cov_data_create_instance.part.0 [0x8e95130]
+sslu_traverse_scopes [0x889c659]
+sslu_traverse_scopes [0x889d904]
+traverseAllDut [0x8e6fe45]
+cov_data_dump [0x8e96ef0]
+cover_dump [0x829d2fd]
+nc_prepare_to_exit [0x81f5cd2]
+nc_fini [0x81f62e9]
+nc_fini2 [0x81f6657]
+scibeginswith [0x937c280]
+ulmSuspend [0x8f29ae7]
+simcmd_run_aux [0x820fa75]
+simcmd_run [0x8211cd2]
+run_command [0x82127da]
+cmd_wrapper [0x85b523a]
+TclInvokeStringCommand [0x8cc42cc]
+Dispatch [0x8cc3d65]
+TclNRRunCallbacks [0x8cc97bb]
+Tcl_EvalObjv [0x8cc983d]
+TclEvalEx [0x8ccba9b]
+Tcl_EvalEx [0x8ccc19e]
+TclNREvalObjEx [0x8ccc294]
+TclEvalObjEx [0x8ccc584]
+Tcl_EvalObjEx [0x8ccc5c4]
+Tcl_RecordAndEvalObj [0x8d6c95e]
+Tcl_RecordAndEval [0x8d6cb34]
+cmd_tcl_run [0x85b918c]
+xncmain [0x81f5259]
+ncmain [0x81f4105]
+main [0x9c8d0c6]
+_start [0x8169d0d]
+******BACKTRACE END*****
