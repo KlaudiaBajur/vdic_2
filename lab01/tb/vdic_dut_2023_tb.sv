@@ -43,7 +43,7 @@ typedef enum {
 //------------------------------------------------------------------------------
 
 logic clk;
-logic rst_n;
+logic               rst_n;
 logic signed [15:0] arg_a;
 logic arg_a_parity;
 logic signed [15:0] arg_b;
@@ -66,7 +66,7 @@ test_result_t        test_result = TEST_PASSED;
 // DUT instantiation
 //------------------------------------------------------------------------------
 
-vdic_dut_2023 DUT (.clk, .rst_n, .arg_a, .arg_a_parity, .arg_b, .arg_b_parity, .req, .ack, .result, .result_parity, .arg_parity_error, .result_rdy);
+vdic_dut_2023 DUT (.clk,.rst_n, .arg_a, .arg_a_parity, .arg_b, .arg_b_parity, .req, .ack, .result, .result_parity, .arg_parity_error, .result_rdy);
 
 //------------------------------------------------------------------------------
 // Clock generator

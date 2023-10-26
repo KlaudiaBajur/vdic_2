@@ -1,5 +1,5 @@
 xrun: 21.03-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
-TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 22:09:35 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 26, 2023 at 09:41:19 CEST
 xrun
 	+compile
 	+sv
@@ -13,7 +13,7 @@ file: lab02/tb/../../common/vdic_dut_2023.svp
 file: lab02/tb/vdic_dut_2023_tb.sv
             #1step; 
                  |
-xmvlog: *W,SAWSTP (lab02/tb/vdic_dut_2023_tb.sv,137|17): Time unit "step" seen in literal - using local precision.
+xmvlog: *W,SAWSTP (lab02/tb/vdic_dut_2023_tb.sv,152|17): Time unit "step" seen in literal - using local precision.
 	module worklib.top:sv
 		errors: 0, warnings: 1
-TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 22:09:35 CEST  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Oct 26, 2023 at 09:41:20 CEST  (total: 00:00:01)

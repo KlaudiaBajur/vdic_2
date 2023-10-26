@@ -43,7 +43,7 @@ typedef enum {
 //------------------------------------------------------------------------------
 
 logic clk;
-logic rst_n;
+logic               rst_n;
 logic signed [15:0] arg_a;
 logic arg_a_parity;
 logic signed [15:0] arg_b;
@@ -55,6 +55,11 @@ logic signed [31:0] result;
 logic result_parity;
 logic arg_parity_error;
 logic result_rdy;
+	
+bit flag_arg_a_parity;
+bit flag_arg_b_parity;
+	
+
 
 test_result_t               test_result     = TEST_PASSED;
 
@@ -72,28 +77,29 @@ vdic_dut_2023 DUT (.clk, .rst_n, .arg_a, .arg_a_parity, .arg_b, .arg_b_parity, .
 covergroup dut_cov;
 
     option.name = "cg_dut_cov";
-
-    coverpoint arg_a_parity {
-	        bins arg_a_parity_er = {1'b1};
-	        bins arg_a_parity_no_er = {1'b0};
-        }
-	coverpoint arg_b_parity {
-	        bins arg_b_parity_er = {1'b0};
-	        bins arg_b_parity_no_er = {1'b1};
-	    }
-	coverpoint arg_parity_error {
-	        bins arg_parity_error_flag = {1'b1};
-	        bins arg_parity_error_no_flag = {1'b0};
+	//Test 1, 2, 3, 4 from specification
+	coverpoint flag_arg_a_parity {
+			bins arg_parity_error_flag = {1'b1};
+	    	bins arg_parity_error_no_flag = {1'b0};
+		
 	}
-	parity_cross: cross arg_b_parity, arg_a_parity {
-		bins parity_cross_1 		= binsof (arg_a_parity.arg_a_parity_er) 	&& binsof (arg_b_parity.arg_b_parity_no_er);
-	    bins parity_cross_2 		= binsof (arg_a_parity.arg_a_parity_no_er)  && binsof (arg_b_parity.arg_b_parity_no_er);
-	    bins parity_cross_3 		= binsof (arg_a_parity.arg_a_parity_no_er)  && binsof (arg_b_parity.arg_b_parity_er);
-		bins parity_cross_4 		= binsof (arg_a_parity.arg_a_parity_er) 	&& binsof (arg_b_parity.arg_b_parity_er);
+	
+	coverpoint flag_arg_b_parity {
+			bins arg_parity_error_flag = {1'b1};
+	        bins arg_parity_error_no_flag = {1'b0};
+		
+	}
+
+	parity_cross: cross flag_arg_a_parity, flag_arg_b_parity {
+	bins  no_error 	= binsof (flag_arg_a_parity.arg_parity_error_no_flag) 	&& binsof (flag_arg_b_parity.arg_parity_error_no_flag);
+	bins  error_a  	= binsof (flag_arg_a_parity.arg_parity_error_flag) 		&& binsof (flag_arg_b_parity.arg_parity_error_no_flag);
+	bins  error_b  	= binsof (flag_arg_a_parity.arg_parity_error_no_flag) 	&& binsof (flag_arg_b_parity.arg_parity_error_flag);
+	bins  error_a_b = binsof (flag_arg_a_parity.arg_parity_error_flag) 		&& binsof (flag_arg_b_parity.arg_parity_error_flag);
+
 	}
 endgroup
 
-// Covergroup checking for min and max arguments of the ALU
+// Covergroup checking for min and max arguments 
 covergroup zeros_or_ones_on_ops;
 
     option.name = "cg_zeros_or_ones_on_ops";
@@ -109,6 +115,7 @@ covergroup zeros_or_ones_on_ops;
         bins others= {[16'sh8001:16'sh7FFE]};
         bins ones  = {16'sh7FFF};
     }
+    
 
     B_00_FF: cross a_leg, b_leg {
 	    
@@ -124,6 +131,7 @@ dut_cov                     oc;
 zeros_or_ones_on_ops        c_00_FF;
 
 initial begin : coverage
+
     oc      = new();
     c_00_FF = new();
     forever begin : sample_cov
@@ -158,6 +166,18 @@ end
 // Tester
 //------------------------------------------------------------------------------
 
+function bit arg_parity_flag(
+	logic signed [15:0] arg,
+	logic arg_parity );
+	bit flag;
+	
+	if( arg_parity === ^arg)
+		flag=1'b0;
+	else 
+		flag=1'b1;
+endfunction :arg_parity_flag
+		
+	
 //---------------------------------
 // Random data generation functions
 
@@ -177,24 +197,37 @@ endfunction : get_data
 
 
 
-function logic get_parity(
-	logic signed [15:0] arg
+function logic [1:0] get_parity(
+	logic signed [15:0] arg_a,
+	logic signed [15:0] arg_b
 	);
     bit zero_ones;
+	bit zero_ones_2;
 	bit counter;
-	bit parity;
+	logic arg_a_parity;
+	logic arg_b_parity;
     zero_ones = 1'($random);
-
-    if (zero_ones == 3'b000)
-        return 1'b1; 
-    else if (zero_ones == 3'b111)
-        return 1'b0;  
-    else
-	    parity=^arg;
-        return(parity);
+	zero_ones_2 = 1'($random);
+	
+	
+    if (zero_ones == 1'b1)begin
+	    arg_a_parity=~^arg_a;
+    	flag_arg_a_parity =1'b1;
+	end
+    else if (zero_ones == 1'b0) begin
+        arg_a_parity=^arg_a;
+	    flag_arg_a_parity=1'b0;
+	end
+    if (zero_ones_2 == 1'b1) begin
+	    arg_b_parity=~^arg_a;
+    	flag_arg_b_parity =1'b1;
+	end
+    else if (zero_ones_2 == 1'b0) begin
+        arg_b_parity=^arg_b;
+	    flag_arg_b_parity=1'b0;
+    end
+    return {arg_a_parity,arg_b_parity}; 
    
-    
-    
 endfunction : get_parity
 //------------------------
 // Tester main
@@ -204,14 +237,16 @@ initial begin : tester
 	logic signed [31:0] expected;   
 	logic expected_arg_parity_error;
 	reset();
+	rst_n=1'b0;
+	#5;
+	rst_n=1'b1;
     repeat (1000) begin : tester_main_blk
         @(negedge clk)
         //valid arg_a valid arg_b valid arg_a_parity valid arg_b_parity
         	arg_a = get_data();
         	arg_b = get_data();
         	req   = 1'b1;
-	    	arg_a_parity = get_parity(arg_a); 
-	    	arg_b_parity = get_parity(arg_b);
+	    	{arg_a_parity, arg_b_parity }= get_parity(arg_a, arg_b); 
 	    	wait(ack); //wait for high ack to move to next steps
 	    	req = 0;
 	    	wait(result_rdy);
@@ -328,7 +363,7 @@ end : tester
 task reset();
     req     = 1'b0;
     rst_n = 1'b0;
-    @(negedge clk);
+    @(posedge clk);
     rst_n = 1'b1;
 endtask : reset
 
@@ -345,9 +380,11 @@ function logic signed [32:0] get_expected(
 	logic  				arg_parity_error;
 	logic  				result_parity;
 	logic signed [31:0] ret;
+
 	
 	ret= arg_a*arg_b;
-	if(arg_a_parity != ^arg_a || arg_b_parity != ^arg_b || result_parity != ^ret) begin
+	
+	if(arg_a_parity != ^arg_a || arg_b_parity != ^arg_b  || result_parity != ^ret) begin
 		arg_parity_error = 1'b1;
 		ret = 0;
 	end

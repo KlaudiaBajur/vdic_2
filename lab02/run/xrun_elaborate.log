@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 22:06:40 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 26, 2023 at 09:51:57 CEST
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -31,25 +31,25 @@ xrun
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-		worklib.vdic_dut_2023:svp <0x0d367ceb>
+		worklib.vdic_dut_2023:svp <0x1de59b68>
 			streams:  25, words: 13928
-		worklib.top:sv <0x264ce2cb>
-			streams:  27, words: 74188
+		worklib.top:sv <0x6ce7fb61>
+			streams:  26, words: 78499
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             60      60
+		Registers:             69      69
 		Scalar wires:          17       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
 		Initial blocks:         4       4
 		Final blocks:           1       1
 		Cont. assignments:      8      10
-		Pseudo assignments:    10      10
+		Pseudo assignments:     8       8
 		Assertions:             1       1
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 22:06:41 CEST  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Oct 26, 2023 at 09:51:58 CEST  (total: 00:00:01)
