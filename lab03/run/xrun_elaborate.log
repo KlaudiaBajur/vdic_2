@@ -1,0 +1,72 @@
+TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 00:55:02 CET
+xrun
+	-elaborate
+	-l xrun_elaborate.log
+	-F ../tb/tb.f
+		../../common/vdic_dut_2023.svp
+		mult_bfm.sv
+		tpgen.sv
+		coverage.sv
+		scoreboard.sv
+		top.sv
+	-v93
+	-define DEBUG
+	+nowarnDSEM2009
+	+nowarnDSEMEL
+	+nowarnCGDEFN
+	+nowarnCOVUTA
+	+nowarnBADPRF
+	+nowarnXCLGNOPTM
+	+nowarnRNDXCELON
+	+nowarnSAWSTP
+	-xmlibdirname INCA_libs
+	+overwrite
+	-nocopyright
+	-coverage all
+	-covoverwrite
+	-covfile xrun_covfile.txt
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		top
+
+	Extracting FSMs for coverage:
+		worklib.tpgen
+		worklib.coverage
+		worklib.scoreboard
+		worklib.top
+	Total FSMs extracted = 0
+	Building instance overlay tables: .................... Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+	Generating native compiled code:
+		worklib.vdic_dut_2023:svp <0x4fc5ff32>
+			streams:  25, words: 13928
+		worklib.scoreboard:sv <0x4a858b33>
+			streams:   7, words: 17260
+		worklib.coverage:sv <0x7b8a206f>
+			streams:   5, words:  6822
+		worklib.tpgen:sv <0x1008d0a3>
+			streams:   3, words: 14241
+		worklib.top:sv <0x3aec5610>
+			streams:  12, words:  3008
+		worklib.mult_bfm:sv <0x235ce68a>
+			streams:   3, words:  6313
+	Building instance specific data structures.
+	Performing constant object marking (COM) analysis.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                Instances  Unique
+		Modules:                5       5
+		Interfaces:             1       1
+		Registers:             84      84
+		Scalar wires:          17       -
+		Vectored wires:        10       -
+		Always blocks:          3       3
+		Initial blocks:         4       4
+		Final blocks:           1       1
+		Cont. assignments:      8      10
+		Pseudo assignments:    12      12
+		Assertions:             1       1
+		Covergroup Instances:   0       2
+	Writing initial simulation snapshot: worklib.top:sv
+TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 00:55:02 CET  (total: 00:00:00)

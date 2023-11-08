@@ -38,5 +38,41 @@
 				<arguments>1.0-name-matches-false-true-.*\.log|.*\.history|.*\.key</arguments>
 			</matcher>
 		</filter>
+		<filter>
+			<id>1699396728074</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>ro.amiq.dvt.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-true-false-.git</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1699396728074</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>ro.amiq.dvt.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-true-false-lab02/run</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1699396728074</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>ro.amiq.dvt.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-true-false-lab01/run</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1699396728074</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>ro.amiq.dvt.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-true-false-lab01example/run</arguments>
+			</matcher>
+		</filter>
 	</filteredResources>
 </projectDescription>

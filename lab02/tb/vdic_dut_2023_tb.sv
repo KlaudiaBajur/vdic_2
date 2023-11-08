@@ -166,16 +166,16 @@ end
 // Tester
 //------------------------------------------------------------------------------
 
-function bit arg_parity_flag(
-	logic signed [15:0] arg,
-	logic arg_parity );
-	bit flag;
-	
-	if( arg_parity === ^arg)
-		flag=1'b0;
-	else 
-		flag=1'b1;
-endfunction :arg_parity_flag
+//function bit arg_parity_flag(
+//	logic signed [15:0] arg,
+//	logic arg_parity );
+//	bit flag;
+//	
+//	if( arg_parity === ^arg)
+//		flag=1'b0;
+//	else 
+//		flag=1'b1;
+//endfunction :arg_parity_flag
 		
 	
 //---------------------------------
@@ -393,6 +393,8 @@ function logic signed [32:0] get_expected(
 	end
 	return{ret, arg_parity_error};
 endfunction : get_expected
+
+
 //------------------------------------------------------------------------------
 // Temporary. The scoreboard will be later used for checking the data
 final begin : finish_of_the_test

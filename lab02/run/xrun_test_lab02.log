@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 26, 2023 at 09:51:58 CEST
+TOOL:	xrun	21.03-s009: Started on Nov 07, 2023 at 22:54:52 CET
 xrun
 	-F ../tb/tb.f
 		../../common/vdic_dut_2023.svp
@@ -38,7 +38,7 @@ Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             69      69
+		Registers:             65      65
 		Scalar wires:          17       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
@@ -58,7 +58,7 @@ xcelium> run
 -----------------------------------[0m
 
 Simulation complete via $finish(1) at time 467810 NS + 3
-../tb/vdic_dut_2023_tb.sv:364     $finish;
+../tb/vdic_dut_2023_tb.sv:357     $finish;
 xcelium> exit
 See ./cov_work/scope/lab02/icc.com file for message(s) on coverage constant object marking
 
@@ -69,6 +69,6 @@ coverage setup:
   testname :  lab02
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_657bc2a1_5527e075.ucm
-  data               :  ./cov_work/scope/lab02/icc_657bc2a1_5527e075.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 26, 2023 at 09:52:00 CEST  (total: 00:00:02)
+  model(design data) :  ./cov_work/scope/icc_64a3a66f_5527e075.ucm
+  data               :  ./cov_work/scope/lab02/icc_64a3a66f_5527e075.ucd
+TOOL:	xrun	21.03-s009: Exiting on Nov 07, 2023 at 22:54:53 CET  (total: 00:00:01)
