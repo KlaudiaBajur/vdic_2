@@ -18,9 +18,9 @@ interface mult_bfm;
 
 logic clk;
 logic               rst_n;
-logic signed [15:0] arg_a;
+logic signed [15:0] arg_a=0;
 logic arg_a_parity;
-logic signed [15:0] arg_b;
+logic signed [15:0] arg_b=0;
 logic arg_b_parity;
 logic req;
 
@@ -65,18 +65,19 @@ task send_data(
 	input logic signed 	[15:0] 	iA,
 	input logic               	iA_parity,
 	input logic signed 	[15:0] 	iB,
-	input logic               	iB_parity
-	//bit flag_arg_a_parity_tpgen,
-	//bit flag_arg_b_parity_tpgen
+	input logic               	iB_parity,
+	bit flag_arg_a_parity_tpgen,
+	bit flag_arg_b_parity_tpgen
 	);
 
     arg_a = iA;
     arg_b = iB;
 	arg_a_parity = iA_parity;
 	arg_b_parity = iB_parity;
-	//flag_arg_a_parity = flag_arg_a_parity_tpgen;
-	//flag_arg_a_parity = flag_arg_a_parity_tpgen;
+	flag_arg_a_parity = flag_arg_a_parity_tpgen;
+	flag_arg_b_parity = flag_arg_b_parity_tpgen;
 
+	@(negedge clk); //!!!
     req = 1'b1;    
 	wait(ack);	
 	req = 1'b0;

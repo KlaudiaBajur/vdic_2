@@ -2,14 +2,14 @@
 *I,MERGL1: Merging Simulation Coverage ...
 ----------------------------
 *I,MERGL1: Preparing target model ...
-*I,MERGL1: Reading model of primary run (cov_work/scope/lab03) as initial model: cov_work/scope/icc_1a16e8b3_5440d7ee.ucm
+*I,MERGL1: Reading model of primary run (cov_work/scope/lab03) as initial model: cov_work/scope/icc_34db0e29_5440d7ee.ucm
 *I,MERGL1: Target model generated successfully.
 *I,MERGL1: Projecting Simulation ucd data into the target model ...
 *I,MERGL2:   cov_work/scope/lab03:
 *I,MERGL3:       Data is projected in to the target model.
 *I,MERGL1: Writing output database cov_work/scope/merged_results:
-*I,MERGL2:   Model: cov_work/scope/merged_results/icc_1a16e8b3_5440d7ee.ucm
-*I,MERGL2:   Data : cov_work/scope/merged_results/icc_1a16e8b3_5440d7ee.ucd
+*I,MERGL2:   Model: cov_work/scope/merged_results/icc_34db0e29_5440d7ee.ucm
+*I,MERGL2:   Data : cov_work/scope/merged_results/icc_34db0e29_5440d7ee.ucd
 *I,MERGL1: No Specman coverage databases found in the runs.
 Total conflicts during target model creation: 0
 Total items not merged                      : 0
@@ -20,8 +20,8 @@ Total runs not merged                                 : 0
 name                                     Overall Average      Overall Covered      Code Average         Code Covered         Fsm Average          Fsm Covered          Functional Average   Functional Covered   
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 top                                      n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
-|--bfm                                   99.33%               98.81% (83/84)       99.33%               98.81% (83/84)       n/a                  n/a                  n/a                  n/a                  
-|--tpgen_i                               94.29%               92.00% (46/50)       94.29%               92.00% (46/50)       n/a                  n/a                  n/a                  n/a                  
-|--coverage_i                            80.46%               90.91% (60/66)       77.59%               93.02% (40/43)       n/a                  n/a                  83.33%               86.96% (20/23)       
-|--scoreboard_i                          77.02%               50.88% (29/57)       54.03%               50.00% (28/56)       n/a                  n/a                  100.00%              100.00% (1/1)        
+|--bfm                                   100.00%              100.00% (85/85)      100.00%              100.00% (85/85)      n/a                  n/a                  n/a                  n/a                  
+|--tpgen_i                               91.15%               91.30% (42/46)       91.15%               91.30% (42/46)       n/a                  n/a                  n/a                  n/a                  
+|--coverage_i                            100.00%              100.00% (66/66)      100.00%              100.00% (43/43)      n/a                  n/a                  100.00%              100.00% (23/23)      
+|--scoreboard_i                          71.46%               49.12% (28/57)       42.92%               48.21% (27/56)       n/a                  n/a                  100.00%              100.00% (1/1)        
 |--DUT                                   100.00%              100.00% (73/73)      100.00%              100.00% (73/73)      n/a                  n/a                  n/a                  n/a                  

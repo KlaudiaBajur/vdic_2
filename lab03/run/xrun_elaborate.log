@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 00:55:02 CET
+TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:12:46 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -10,7 +10,6 @@ xrun
 		scoreboard.sv
 		top.sv
 	-v93
-	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -39,18 +38,18 @@ xrun
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-		worklib.vdic_dut_2023:svp <0x4fc5ff32>
+		worklib.vdic_dut_2023:svp <0x42bd1fd2>
 			streams:  25, words: 13928
-		worklib.scoreboard:sv <0x4a858b33>
-			streams:   7, words: 17260
-		worklib.coverage:sv <0x7b8a206f>
+		worklib.scoreboard:sv <0x57bf070c>
+			streams:   7, words: 16172
+		worklib.coverage:sv <0x1ed10c33>
 			streams:   5, words:  6822
-		worklib.tpgen:sv <0x1008d0a3>
-			streams:   3, words: 14241
-		worklib.top:sv <0x3aec5610>
+		worklib.tpgen:sv <0x39251915>
+			streams:   3, words: 14340
+		worklib.top:sv <0x4607366b>
 			streams:  12, words:  3008
-		worklib.mult_bfm:sv <0x235ce68a>
-			streams:   3, words:  6313
+		worklib.mult_bfm:sv <0x7b29bda5>
+			streams:   5, words:  8985
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
@@ -58,15 +57,15 @@ xrun
 		                Instances  Unique
 		Modules:                5       5
 		Interfaces:             1       1
-		Registers:             84      84
+		Registers:             83      83
 		Scalar wires:          17       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
-		Initial blocks:         4       4
+		Initial blocks:         6       6
 		Final blocks:           1       1
 		Cont. assignments:      8      10
 		Pseudo assignments:    12      12
 		Assertions:             1       1
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 00:55:02 CET  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:12:47 CET  (total: 00:00:01)

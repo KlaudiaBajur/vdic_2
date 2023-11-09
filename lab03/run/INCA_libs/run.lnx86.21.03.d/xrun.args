@@ -5,8 +5,6 @@
 -F
 ../tb/tb.f
 -v93
--define
-DEBUG
 +nowarnDSEM2009
 +nowarnDSEMEL
 +nowarnCGDEFN
@@ -24,6 +22,8 @@ all
 -covoverwrite
 -covfile
 xrun_covfile.txt
+-covtest
+lab03
 +UVM_TESTNAME=lab03
 -l
 xrun_test_lab03.log

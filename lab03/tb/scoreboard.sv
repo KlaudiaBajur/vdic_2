@@ -25,8 +25,8 @@ test_result_t        test_result = TEST_PASSED;
 //------------------------------------------------------------------------------
 // Calculate expected result
 //------------------------------------------------------------------------------
-bit flag_arg_a_parity;
-bit flag_arg_b_parity;
+//bit flag_arg_a_parity;
+//bit flag_arg_b_parity;
 	
 function logic signed [32:0] get_expected(
 	logic signed [15:0] arg_a,
@@ -70,7 +70,6 @@ typedef struct packed {
 
 data_packet_t sb_data_q [$];
 
-logic signed [31:0] mult_result;
 
 
 always @(posedge bfm.clk) begin:scoreboard_fe_blk
@@ -98,7 +97,7 @@ always @(negedge bfm.clk) begin : scoreboard_be_blk
 
         CHK_RESULT: assert(bfm.result === dp.result && bfm.arg_parity_error === dp.arg_parity_error) begin
            `ifdef DEBUG
-            $display("%0t Test passed for arg_a=%0d arg_b=%0d", $time, dp.arg_a, dp.arg_b);
+       //     $display("%0t Test passed for arg_a=%0d arg_b=%0d Expected: %d  received: %d", $time, dp.arg_a, dp.arg_b, dp.result, bfm.result );
            `endif
         end
         else begin

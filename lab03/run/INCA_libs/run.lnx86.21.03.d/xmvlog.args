@@ -15,8 +15,6 @@ UVM_PLI
 ../tb/coverage.sv
 ../tb/scoreboard.sv
 ../tb/top.sv
--DEFINE
-DEBUG
 -NOWARN
 DSEM2009
 -NOWARN

@@ -16,8 +16,7 @@
 module tpgen(mult_bfm bfm);
     
 //import mult_pkg::*;
-bit flag_arg_a_parity_tpgen;
-bit flag_arg_b_parity_tpgen;
+
 
 function logic signed [15:0] get_data();
 
@@ -166,7 +165,7 @@ end : tester
 
 */
 
-function logic [1:0] get_parity(
+function logic [3:0] get_parity(
 	logic signed [15:0] arg_a,
 	logic signed [15:0] arg_b
 	);
@@ -198,7 +197,7 @@ function logic [1:0] get_parity(
         arg_b_parity=^arg_b;
 	    flag_arg_b_parity=1'b0;
     end
-    return {arg_a_parity,arg_b_parity}; 
+    return {arg_a_parity,arg_b_parity,flag_arg_a_parity,flag_arg_b_parity}; 
    
 endfunction : get_parity
 
@@ -207,6 +206,8 @@ initial begin
 	logic               	iA_parity;
 	logic signed 	[15:0] 	iB;        
 	logic               	iB_parity;
+	logic 					flag_arg_a_parity;
+	logic 					flag_arg_b_parity;
 	
 	logic signed 	[31:0] 	result;
 	logic               	result_parity;
@@ -216,11 +217,11 @@ initial begin
     repeat (1000) begin : random_loop
         iA = get_data();
         iB = get_data();
-	    {iA_parity, iB_parity }= get_parity(iA, iB); 
-        bfm.send_data(iA, iA_parity, iB, iB_parity);
-	    wait(bfm.result_rdy);
+	    {iA_parity, iB_parity, flag_arg_a_parity, flag_arg_b_parity }= get_parity(iA, iB); 
+        bfm.send_data(iA, iA_parity, iB, iB_parity, flag_arg_a_parity, flag_arg_b_parity);
+	    //wait(bfm.result_rdy);
     end : random_loop
-    bfm.send_data(iA, iA_parity, iB, iB_parity);
+    bfm.send_data(iA, iA_parity, iB, iB_parity, flag_arg_a_parity, flag_arg_b_parity);
 	bfm.reset();
     
     $finish;
