@@ -39,7 +39,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1699396728074</id>
+			<id>1699999880029</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -48,7 +48,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1699396728074</id>
+			<id>1699999880029</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -57,7 +57,16 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1699396728074</id>
+			<id>1699999880029</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>ro.amiq.dvt.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-true-false-lab03/run</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1699999880029</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -66,7 +75,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1699396728074</id>
+			<id>1699999880029</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

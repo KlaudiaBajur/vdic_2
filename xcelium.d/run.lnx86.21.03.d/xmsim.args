@@ -4,11 +4,16 @@
 //
 +compile
 +sv
++incdir+tb_classes
++incdir+.
++nowarn+DSEMEL
+-NOWARN
+DSEMEL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1699517563
+1700065235
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx86.21.03.d

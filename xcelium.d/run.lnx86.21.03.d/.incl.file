@@ -1,0 +1,6 @@
+./coverage.svh
+./tpgen.svh
+./scoreboard.svh
+./testbench.svh
+./tinyalu_macros.svh
+lab04part2/tb/tb_classes/tinyalu_macros.svh

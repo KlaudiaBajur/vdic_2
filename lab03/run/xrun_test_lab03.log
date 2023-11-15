@@ -1,10 +1,9 @@
-TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:12:47 CET
+TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:43:25 CET
 xrun
 	-F ../tb/tb.f
 		../../common/vdic_dut_2023.svp
 		mult_bfm.sv
 		tpgen.sv
-		coverage.sv
 		scoreboard.sv
 		top.sv
 	-v93
@@ -33,7 +32,6 @@ Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/
 
 	Extracting FSMs for coverage:
 		worklib.tpgen
-		worklib.coverage
 		worklib.scoreboard
 		worklib.top
 	Total FSMs extracted = 0
@@ -43,19 +41,18 @@ Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		                Instances  Unique
-		Modules:                5       5
-		Interfaces:             1       1
-		Registers:             83      83
-		Scalar wires:          17       -
-		Vectored wires:        10       -
-		Always blocks:          3       3
-		Initial blocks:         6       6
-		Final blocks:           1       1
-		Cont. assignments:      8      10
-		Pseudo assignments:    12      12
-		Assertions:             1       1
-		Covergroup Instances:   0       2
+		              Instances  Unique
+		Modules:              4       4
+		Interfaces:           1       1
+		Registers:           79      79
+		Scalar wires:        17       -
+		Vectored wires:      10       -
+		Always blocks:        3       3
+		Initial blocks:       5       5
+		Final blocks:         1       1
+		Cont. assignments:    8      10
+		Pseudo assignments:  12      12
+		Assertions:           1       1
 	Writing initial simulation snapshot: worklib.top:sv
 Loading snapshot worklib.top:sv .................... Done
 xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/xcelium/files/xmsimrc
@@ -77,6 +74,6 @@ coverage setup:
   testname :  lab03
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_34db0e29_5440d7ee.ucm
-  data               :  ./cov_work/scope/lab03/icc_34db0e29_5440d7ee.ucd
-TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:12:48 CET  (total: 00:00:01)
+  model(design data) :  ./cov_work/scope/icc_4591a15f_3c572443.ucm
+  data               :  ./cov_work/scope/lab03/icc_4591a15f_3c572443.ucd
+TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:43:26 CET  (total: 00:00:01)

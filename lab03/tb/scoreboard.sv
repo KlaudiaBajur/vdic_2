@@ -76,7 +76,7 @@ always @(posedge bfm.clk) begin:scoreboard_fe_blk
     if(bfm.req == 1 && start_prev == 0) begin
                 sb_data_q.push_front(
                     data_packet_t'({
-	                    bfm.arg_a,
+	                    bfm.arg_a, // call the task
 	                    bfm.arg_b,
 	                    bfm.arg_a_parity,
 	                    bfm.arg_b_parity,
@@ -87,7 +87,7 @@ always @(posedge bfm.clk) begin:scoreboard_fe_blk
     start_prev = bfm.req;
 end
 
-
+//task to read the date from mult_bfm to read it in struct packet  
 
 always @(negedge bfm.clk) begin : scoreboard_be_blk
     if(bfm.result_rdy) begin:verify_result

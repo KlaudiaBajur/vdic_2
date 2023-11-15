@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:12:46 CET
+TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:43:24 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -6,7 +6,6 @@ xrun
 		../../common/vdic_dut_2023.svp
 		mult_bfm.sv
 		tpgen.sv
-		coverage.sv
 		scoreboard.sv
 		top.sv
 	-v93
@@ -31,7 +30,6 @@ xrun
 
 	Extracting FSMs for coverage:
 		worklib.tpgen
-		worklib.coverage
 		worklib.scoreboard
 		worklib.top
 	Total FSMs extracted = 0
@@ -40,32 +38,29 @@ xrun
 	Generating native compiled code:
 		worklib.vdic_dut_2023:svp <0x42bd1fd2>
 			streams:  25, words: 13928
-		worklib.scoreboard:sv <0x57bf070c>
+		worklib.scoreboard:sv <0x75343c6a>
 			streams:   7, words: 16172
-		worklib.coverage:sv <0x1ed10c33>
-			streams:   5, words:  6822
-		worklib.tpgen:sv <0x39251915>
+		worklib.tpgen:sv <0x67aff73a>
 			streams:   3, words: 14340
-		worklib.top:sv <0x4607366b>
+		worklib.top:sv <0x244d583e>
 			streams:  12, words:  3008
-		worklib.mult_bfm:sv <0x7b29bda5>
-			streams:   5, words:  8985
+		worklib.mult_bfm:sv <0x2c2c86cc>
+			streams:   5, words:  8501
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		                Instances  Unique
-		Modules:                5       5
-		Interfaces:             1       1
-		Registers:             83      83
-		Scalar wires:          17       -
-		Vectored wires:        10       -
-		Always blocks:          3       3
-		Initial blocks:         6       6
-		Final blocks:           1       1
-		Cont. assignments:      8      10
-		Pseudo assignments:    12      12
-		Assertions:             1       1
-		Covergroup Instances:   0       2
+		              Instances  Unique
+		Modules:              4       4
+		Interfaces:           1       1
+		Registers:           79      79
+		Scalar wires:        17       -
+		Vectored wires:      10       -
+		Always blocks:        3       3
+		Initial blocks:       5       5
+		Final blocks:         1       1
+		Cont. assignments:    8      10
+		Pseudo assignments:  12      12
+		Assertions:           1       1
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:12:47 CET  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:43:25 CET  (total: 00:00:01)

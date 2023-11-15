@@ -83,4 +83,16 @@ Simulation complete via $finish(1) at time 67870 NS + 0
 xcelium> run
 xmsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
 xcelium> scope -set top.DUT
-xcelium> 
+xcelium> See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_1d1286ad_5440d7ee.ucm
+  data               :  ./cov_work/scope/test/icc_1d1286ad_5440d7ee.ucd
+^C
+xcelium> TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:49:02 CET  (total: 00:58:54)

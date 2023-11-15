@@ -1,32 +1,27 @@
 xrun: 21.03-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
-TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 09:12:43 CET
+TOOL:	xrun	21.03-s009: Started on Nov 15, 2023 at 17:20:35 CET
 xrun
 	+compile
 	+sv
-	-f /home/student/kbajur/VDIC/.dvt/lab3.build
-		-F lab03/tb/tb.f
-			../../common/vdic_dut_2023.svp
+	-f /home/student/kbajur/VDIC/.dvt/lab4part2.build
+		-F lab04part2/tb/tb.f
+			mult_pkg.sv
 			mult_bfm.sv
-			tpgen.sv
-			coverage.sv
-			scoreboard.sv
+			../../common/vdic_dut_2023.svp
 			top.sv
-file: lab03/tb/../../common/vdic_dut_2023.svp
-	module worklib.vdic_dut_2023:svp
+			+incdir+tb_classes
+			+incdir+.
+			+nowarn+DSEMEL
+file: lab04part2/tb/mult_pkg.sv
+	package worklib.mult_pkg:sv
 		errors: 0, warnings: 0
-file: lab03/tb/mult_bfm.sv
+file: lab04part2/tb/mult_bfm.sv
 	interface worklib.mult_bfm:sv
 		errors: 0, warnings: 0
-file: lab03/tb/tpgen.sv
-	module worklib.tpgen:sv
+file: lab04part2/tb/../../common/vdic_dut_2023.svp
+	module worklib.vdic_dut_2023:svp
 		errors: 0, warnings: 0
-file: lab03/tb/coverage.sv
-	module worklib.coverage:sv
-		errors: 0, warnings: 0
-file: lab03/tb/scoreboard.sv
-	module worklib.scoreboard:sv
-		errors: 0, warnings: 0
-file: lab03/tb/top.sv
+file: lab04part2/tb/top.sv
 	module worklib.top:sv
 		errors: 0, warnings: 0
-TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 09:12:44 CET  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Nov 15, 2023 at 17:20:36 CET  (total: 00:00:01)

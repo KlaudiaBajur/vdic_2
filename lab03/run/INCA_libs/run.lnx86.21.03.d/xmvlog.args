@@ -12,7 +12,6 @@ UVM_PLI
 ../tb/../../common/vdic_dut_2023.svp
 ../tb/mult_bfm.sv
 ../tb/tpgen.sv
-../tb/coverage.sv
 ../tb/scoreboard.sv
 ../tb/top.sv
 -NOWARN
