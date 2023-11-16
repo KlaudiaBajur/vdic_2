@@ -1,0 +1,80 @@
+csi-xmvlog_cg - CSI: Command line:
+xmvlog_cg
+    -NOCOPYRIGHT
+    -CHECK_VERSION TOOL:	xmelab	21.03-s009
+    -ENABLE_CG_ACCESS_OPT
+    -MCE_ENABLE_LNACC
+    -ENABLE_AA_ASSIGN_OPT
+    -ENABLE_TB_O7
+    -ENABLE_TB_O12
+    -ENABLE_TB_O13
+    -EN_CB_WAITOPT
+    -ENABLE_REF_PRUNE
+    -ENABLE_UPVC
+    -EN_UVM_GET_FIELD_BY_NAME_OPT
+    -EN_UVM_LOOKUP_REGEX_OPT
+    -ENABLE_TB_O1
+    -ENABLE_TB_O2
+    -ENABLE_TB_O9
+    -ENABLE_TB_O10
+    -ENABLE_TB_O14
+    -ENABLE_SFMTIOA_OPT
+    -ENABLE_CGDOM_OPT
+    -ENABLE_TB_O20
+    -ENABLE_TB_O3
+    -ENABLE_TB_O23
+    -EN_ENUM_BUILTIN_OPT
+    -ENABLE_CCMC
+    -ENABLE_ISCC
+    -ENABLE_DRSVH
+    -ENABLE_NTICM
+    -ENABLE_NTIRM
+    -ENABLE_IFF_PRUNE
+    -ENABLE_AA_TWO_STATED_MEM_OPT
+    -ENABLE_DA_TWO_STATED_MEM_OPT
+    -RUNMODE
+    -NOWARN DSEM2009
+    -NOWARN DSEMEL
+    -NOWARN CGDEFN
+    -NOWARN COVUTA
+    -NOWARN BADPRF
+    -NOWARN XCLGNOPTM
+    -NOWARN RNDXCELON
+    -NOWARN SAWSTP
+    -CDSLIB ./INCA_libs/run.lnx86.21.03.d/cds.lib
+    -HDLVAR ./INCA_libs/run.lnx86.21.03.d/hdl.var
+    -MESSAGES
+    -XHANDOFF worklib
+    -IMPLICIT worklib
+    worklib.top:sv
+    0x3bf4a6aa
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x3ec2000a
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x235daf52
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x2b3f079e
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x2afa8578
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x401cbfdb
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x4a4cd699
+    worklib.\$unit_0x50b6e269 :compilation_unit
+    0x1bec954e
+    -LOG_FD 4
+
+csi-xmvlog_cg - CSI: *F,INTERR: INTERNAL EXCEPTION
+-----------------------------------------------------------------
+The tool has encountered an unexpected condition and must exit.
+Contact Cadence Design Systems customer support about this
+problem and provide enough information to help us reproduce it,
+including the logfile that contains this error message.
+  TOOL:	xmvlog_cg	21.03-s009
+  HOSTNAME: cadence24
+  OPERATING SYSTEM: Linux 3.10.0-1160.99.1.el7.x86_64 #1 SMP Wed Sep 13 14:19:20 UTC 2023 x86_64
+  MESSAGE: gq_sf_feof - invalid SVHR/REAL/RAWDATA argument to $feof
+-----------------------------------------------------------------
+
+csi-xmvlog_cg - CSI: Cadence Support Investigation, recording details
+csi-xmvlog_cg - CSI: investigation complete took 0.000 secs, send this file to Cadence Support

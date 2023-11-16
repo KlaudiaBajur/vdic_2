@@ -29,7 +29,12 @@ virtual class shape_c;
 		$display("This is: %0s ", name);
 		foreach(points[i])
 			$display("(%0f, %0f)", points[i][0], points[i][1]);
-		$display("Area is %0.2f ", get_area());
+		if (get_area() == -1) begin
+			$display("Area is: can not be calculated for generic %s.", name);
+		end
+		else begin
+			$display("Area is %0.2f ", get_area());
+		end
 	endfunction : print
 
 endclass: shape_c
@@ -41,8 +46,7 @@ class polygon_c extends shape_c;
 	endfunction
 	
 	function real get_area();
-		real area = 5;
-		return area;
+		 return -1;
 	endfunction: get_area
 endclass: polygon_c
 
@@ -77,10 +81,24 @@ class circle_c extends shape_c;
 		super.new(name, points);
 	endfunction
 	
+	function real get_radius();
+		real radius = $pow((points[1][0]-points[0][0]), 2) + $pow((points[1][1]-points[0][1]), 2);
+		return radius;
+	endfunction: get_radius
+	
+	
 	function real get_area();
-		real area = 2;
+		real radius = get_radius();
+		real area =  3.14*radius;
 		return area;
 	endfunction: get_area
+	
+	function void print();
+		$display("This is: %0s ", name);
+		$display("%0f", points[1][0]);		// circle center
+		$display("radius: %0.2f", $sqrt(get_radius()));
+		$display("Area is: %0.2f ", get_area());
+	endfunction : print
 endclass: circle_c
 
 
@@ -110,6 +128,7 @@ class shape_factory_c;
 		triangle_c triangle;
 		circle_c circle;
 		
+		$display("size $d", $size(points));
 		case($size(points))
 			2 : begin	
 					circle = new("circle", points);
@@ -148,53 +167,55 @@ module top;
 	initial begin
 		//shape_c shape;
 		real points[$][0:1];
-		real point[20][0:1];
-		real x;
-		real y;
 		int file;
-		int file_handle;
+		real points_table[6][0:1];
 		int i;
-		int k;
 		string line;
-		int count;
-		int ik;
-		int wiersz;
+		int code;
+		int table_length;
+
 		
 		file = $fopen("../tb/lab04part1_shapes.txt", "r");
 		if(file == 0) begin
 			$display("Error. Could not open a file.");
 			$stop;
 		end
-		i = 0;
-		while(!$feof(file)) begin
-			$fscanf(file, "%f %f", x, y);
-			points[i][0] = x;
-      		points[i][1] = y;
-			$display("Point[%0d]: (%0f, %0f)", i, points[i][0], points[i][1]);
-			i++;
+		else begin 
+			while($fgets(line, file)) begin
+				//$display(line);
+		    	code = $sscanf(line, "%0.2f %0.2f \
+									%0.2f %0.2f \
+									%0.2f %0.2f \
+									%0.2f %0.2f \
+									%0.2f %0.2f \
+									%0.2f %0.2f ", 
+									
+									points_table[0][0], points_table[0][1],
+									points_table[1][0], points_table[1][1],
+									points_table[2][0], points_table[2][1],
+									points_table[3][0], points_table[3][1],
+									points_table[4][0], points_table[4][1],
+									points_table[5][0], points_table[5][1]);
+			    
+			    //$display(code);
+			    table_length = ((code/2)-1);
+				for(i = 0; i <= (code/2)-1; i++) begin
+					points[i][0] = points_table[i][0];
+					points[i][1] = points_table[i][1];
+					//$display("Points 2: %0f, %0f", points[i][0], points[i][1]);
+				end
+		    	$display("Code: $d", table_length);
+				//$display("size $d", $size(points));
+				shape = shape_factory_c::make_shape(points);
+				shape_reporter#(circle_c)::report_shapes();
+				shape_reporter#(triangle_c)::report_shapes();
+				shape_reporter#(rectangle_c)::report_shapes();
+				shape_reporter#(polygon_c)::report_shapes();
+
+			end	
+		    
 		end
 		
-		file_handle = $fopen("../tb/lab04part1_shapes.txt", "r");
-      	$fgets(line, file_handle);
-	    
-      	$display("Line read: %s", line);
-		
-		while(!$feof(file_handle)) begin
-			for(i=0; i< line; i++) begin
-				$fscanf(line, "%f %f", x, y);
-				point[i][0] = x;
-      			point[i][1] = y;
-				$display("2 Point[%0d]: (%0f, %0f)", i, point[i][0], point[i][1]);
-			end
-		
-    	end
-		
-
-		shape = shape_factory_c::make_shape(points);
-		shape_reporter#(rectangle_c)::report_shapes();
-		shape_reporter#(circle_c)::report_shapes();
-		shape_reporter#(triangle_c)::report_shapes();
-		shape_reporter#(polygon_c)::report_shapes();
 		$fclose(file);
 	end
 

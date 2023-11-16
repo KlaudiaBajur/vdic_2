@@ -2,6 +2,8 @@
 // File created by:  xrun
 // Do not modify this file
 //
+-INPUT
+"@source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl"
 +nowarnDSEM2009
 +nowarnDSEMEL
 +nowarnCGDEFN
@@ -12,6 +14,10 @@
 +nowarnSAWSTP
 -amsdlibdir
 ./INCA_libs/AMSD
+-uvmhome
+/eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d
+-sv_lib
+/eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/libuvmpli.so
 -NOWARN
 DSEM2009
 -NOWARN
@@ -30,11 +36,15 @@ RNDXCELON
 SAWSTP
 -NOCOPYRIGHT
 -COVOVERWRITE
++UVM_TESTNAME=lab04part1
 -MESSAGES
+-RUN
+-SV_LIB
+/eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/libuvmdpi.so
 +EMGRLOG
-xrun_compile.log
+xrun_test_lab04part1.log
 -XLSTIME
-1700059270
+1700094106
 -XLKEEP
 -XLMODE
 ./INCA_libs/run.lnx86.21.03.d
@@ -48,4 +58,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun	21.03-s009"
 -XLNAME
-./INCA_libs/run.lnx86.21.03.d/cadence24_30598
+./INCA_libs/run.lnx86.21.03.d/cadence24_22581

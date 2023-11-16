@@ -1,4 +1,1 @@
-1700063269 /home/student/kbajur/VDIC/lab04part2/tb/mult_pkg.sv
-1700062053 /home/student/kbajur/VDIC/lab04part2/tb/mult_bfm.sv
-1697368421 /home/student/kbajur/VDIC/common/vdic_dut_2023.svp
-1700063477 /home/student/kbajur/VDIC/lab04part2/tb/top.sv
+1700094240 /home/student/kbajur/VDIC/lab04part1/tb/lab4part1.sv

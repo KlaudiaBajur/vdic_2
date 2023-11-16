@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 15, 2023 at 15:41:10 CET
+TOOL:	xrun	21.03-s009: Started on Nov 16, 2023 at 01:21:45 CET
 xrun
 	-compile
 	-l xrun_compile.log
@@ -21,15 +21,11 @@ xrun
 	-covoverwrite
 	-covfile xrun_covfile.txt
 file: ../tb/lab4part1.sv
-			$fscanf(file, "%f %f", x, y);
-			      |
-xmvlog: *W,NOSYST (../tb/lab4part1.sv,170|9): System function '$fscanf' invoked as a task. Return value will be ignored.
-      	$fgets(line, file_handle);
-      	     |
-xmvlog: *W,NOSYST (../tb/lab4part1.sv,178|12): System function '$fgets' invoked as a task. Return value will be ignored.
-				$fscanf(line, "%f %f", x, y);
-				      |
-xmvlog: *W,NOSYST (../tb/lab4part1.sv,184|10): System function '$fscanf' invoked as a task. Return value will be ignored.
+		real radius = $pow((points[1][0]-points[0][0]), 2) + $pow((points[1][1]-points[0][1]), 2);;
+		                                                                                          |
+xmvlog: *W,UEXPSC (../tb/lab4part1.sv,85|92): Ignored unexpected semicolon following SystemVerilog description keyword (2).
 	module worklib.top:sv
-		errors: 0, warnings: 3
-TOOL:	xrun	21.03-s009: Exiting on Nov 15, 2023 at 15:41:10 CET  (total: 00:00:00)
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+TOOL:	xrun	21.03-s009: Exiting on Nov 16, 2023 at 01:21:45 CET  (total: 00:00:00)

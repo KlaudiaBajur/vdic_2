@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 15, 2023 at 15:32:23 CET
+TOOL:	xrun	21.03-s009: Started on Nov 16, 2023 at 01:21:46 CET
 xrun
 	-F ../tb/tb.f
 		lab4part1.sv
@@ -22,12 +22,11 @@ xrun
 	-l xrun_test_lab04part1.log
 Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d
 file: ../tb/lab4part1.sv
-			$fscanf(file, "%f %f", x, y);
-			      |
-xmvlog: *W,NOSYST (../tb/lab4part1.sv,170|9): System function '$fscanf' invoked as a task. Return value will be ignored.
-      	$fgets(line, file_handle);
-      	     |
-xmvlog: *W,NOSYST (../tb/lab4part1.sv,184|12): System function '$fgets' invoked as a task. Return value will be ignored.
+		real radius = $pow((points[1][0]-points[0][0]), 2) + $pow((points[1][1]-points[0][1]), 2);;
+		                                                                                          |
+xmvlog: *W,UEXPSC (../tb/lab4part1.sv,85|92): Ignored unexpected semicolon following SystemVerilog description keyword (2).
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 	Top level design units:
@@ -40,20 +39,20 @@ xmvlog: *W,NOSYST (../tb/lab4part1.sv,184|12): System function '$fgets' invoked 
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-		worklib.top:sv <0x415d8971>
-			streams:   1, words:  6574
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x0e611d03>
-			streams:  44, words: 14610
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x05c83c8a>
+		worklib.top:sv <0x30fe3c6d>
+			streams:   1, words:  6622
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x60f91c17>
+			streams:  44, words: 15236
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x7ef0b5c0>
+			streams:   8, words: 10301
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x4d96e61a>
 			streams:   6, words:  2523
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x5facb158>
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x40c96ba0>
 			streams:   6, words:  2523
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x5889714b>
-			streams:   6, words:  2523
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x0ea79e9d>
-			streams:   6, words:  2208
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x5373a4d4>
-			streams:   9, words:  5213
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x4b473bf3>
+			streams:   6, words:  2200
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x6c188f06>
+			streams:   9, words:  6052
 		worklib.\$unit_0x50b6e269 :compilation_unit <0x1bec954e>
 			streams:   0, words:     0
 	Building instance specific data structures.
@@ -62,7 +61,7 @@ xmvlog: *W,NOSYST (../tb/lab4part1.sv,184|12): System function '$fgets' invoked 
 	Design hierarchy summary:
 		                    Instances  Unique
 		Modules:                    1       1
-		Registers:                 92      73
+		Registers:                 88      69
 		Initial blocks:             1       1
 		Compilation units:          1       1
 		SV Class declarations:      7       7
@@ -72,73 +71,274 @@ Loading snapshot worklib.top:sv .................... Done
 xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/xcelium/files/xmsimrc
 xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
-Point[0]: (0.000000, 0.000000)
-Point[1]: (-2.000000, 1.000000)
-Point[2]: (0.000000, 5.000000)
-Point[3]: (2.000000, 4.000000)
-Point[4]: (2.000000, 1.000000)
-Point[5]: (0.100000, 0.000000)
-Point[6]: (0.100000, 2.000000)
-Point[7]: (2.300000, 2.000000)
-Point[8]: (2.300000, 0.000000)
-Point[9]: (0.200000, -0.300000)
-Point[10]: (-1.800000, 0.700000)
-Point[11]: (0.200000, 4.700000)
-Point[12]: (2.200000, 3.700000)
-Point[13]: (0.500000, 0.500000)
-Point[14]: (0.000000, 2.000000)
-Point[15]: (2.000000, 2.000000)
-Point[16]: (0.000000, 0.000000)
-Point[17]: (-2.000000, 1.000000)
-Point[18]: (0.000000, 5.000000)
-Point[19]: (2.000000, 4.000000)
-Point[20]: (0.000000, 0.000000)
-Point[21]: (1.000000, 1.000000)
-Point[22]: (-10.000000, 1.000000)
-Point[23]: (1.200000, 1.000000)
-Point[24]: (1.200000, 1.000000)
-Line read: 0 0 -2 1 0 5 2 4 2 1
-
-Line read: 0.1 0 0.1 2 2.3 2 2.3 0
-
-Line read: 0.2 -0.3 -1.8 0.7 0.2 4.7 2.2 3.7
-
-Line read: 0.5 0.5 0 2 2 2
-
-Line read: 0 0 -2 1 0 5 2 4
-
-Line read: 0 0 1 1
-
-Line read: -10 1 1.2 1
-
-Line read: 
+Code: $d          4
+size $d          5
 This is: polygon 
 (0.000000, 0.000000)
 (-2.000000, 1.000000)
 (0.000000, 5.000000)
 (2.000000, 4.000000)
 (2.000000, 1.000000)
-(0.100000, 0.000000)
-(0.100000, 2.000000)
-(2.300000, 2.000000)
-(2.300000, 0.000000)
-(0.200000, -0.300000)
-(-1.800000, 0.700000)
-(0.200000, 4.700000)
-(2.200000, 3.700000)
-(0.500000, 0.500000)
-(0.000000, 2.000000)
-(2.000000, 2.000000)
+Area is: can not be calculated for generic polygon.
+Code: $d          3
+size $d          5
+This is: polygon 
 (0.000000, 0.000000)
 (-2.000000, 1.000000)
 (0.000000, 5.000000)
 (2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+Code: $d          3
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+Code: $d          4
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.500000, 0.500000)
+(0.000000, 2.000000)
+(2.000000, 2.000000)
+(2.200000, 0.200000)
+(4.700000, 2.200000)
+Area is: can not be calculated for generic polygon.
+Code: $d          4
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.500000, 0.500000)
+(0.000000, 2.000000)
+(2.000000, 2.000000)
+(2.200000, 0.200000)
+(4.700000, 2.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(4.700000, 0.200000)
+Area is: can not be calculated for generic polygon.
+Code: $d          4
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.500000, 0.500000)
+(0.000000, 2.000000)
+(2.000000, 2.000000)
+(2.200000, 0.200000)
+(4.700000, 2.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(4.700000, 0.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
 (0.000000, 0.000000)
 (1.000000, 1.000000)
+(0.000000, 0.000000)
+(5.000000, 2.000000)
+(4.000000, 0.200000)
+Area is: can not be calculated for generic polygon.
+Code: $d          4
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.500000, 0.500000)
+(0.000000, 2.000000)
+(2.000000, 2.000000)
+(2.200000, 0.200000)
+(4.700000, 2.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(4.700000, 0.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+(0.000000, 0.000000)
+(5.000000, 2.000000)
+(4.000000, 0.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
 (-10.000000, 1.000000)
 (1.200000, 1.000000)
+(0.000000, 2.000000)
+(4.000000, 2.000000)
+(0.200000, 4.700000)
+Area is: can not be calculated for generic polygon.
+Code: $d          3
+size $d          5
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.100000, 0.000000)
+(0.100000, 2.000000)
+(2.300000, 2.000000)
+(2.300000, 0.000000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.200000, -0.300000)
+(-1.800000, 0.700000)
+(0.200000, 4.700000)
+(2.200000, 3.700000)
+(2.000000, 1.000000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.500000, 0.500000)
+(0.000000, 2.000000)
+(2.000000, 2.000000)
+(2.200000, 0.200000)
+(4.700000, 2.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(-2.000000, 1.000000)
+(0.000000, 5.000000)
+(2.000000, 4.000000)
+(4.700000, 0.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 0.000000)
+(1.000000, 1.000000)
+(0.000000, 0.000000)
+(5.000000, 2.000000)
+(4.000000, 0.200000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(-10.000000, 1.000000)
 (1.200000, 1.000000)
-Area is 5.00 
+(0.000000, 2.000000)
+(4.000000, 2.000000)
+(0.200000, 4.700000)
+Area is: can not be calculated for generic polygon.
+This is: polygon 
+(0.000000, 2.000000)
+(1.200000, 1.200000)
+(1.000000, 2.000000)
+(2.000000, 4.000000)
+(0.200000, 4.700000)
+Area is: can not be calculated for generic polygon.
 xmsim: *W,RNQUIE: Simulation is complete.
 xcelium> exit
 See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
@@ -150,6 +350,6 @@ coverage setup:
   testname :  test
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_08a36b52_00000000.ucm
-  data               :  ./cov_work/scope/test/icc_08a36b52_00000000.ucd
-TOOL:	xrun	21.03-s009: Exiting on Nov 15, 2023 at 15:32:25 CET  (total: 00:00:02)
+  model(design data) :  ./cov_work/scope/icc_27950531_00000000.ucm
+  data               :  ./cov_work/scope/test/icc_27950531_00000000.ucd
+TOOL:	xrun	21.03-s009: Exiting on Nov 16, 2023 at 01:21:47 CET  (total: 00:00:01)

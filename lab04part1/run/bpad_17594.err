@@ -1,0 +1,253 @@
+Operating system: Linux
+                  0.0.0 Linux 3.10.0-1160.99.1.el7.x86_64 #1 SMP Wed Sep 13 14:19:20 UTC 2023 x86_64
+CPU: x86
+     GenuineIntel family 6 model 60 stepping 3
+     1 CPU
+
+GPU: UNKNOWN
+
+Crash reason:  DUMP_REQUESTED
+Crash address: 0xf72d637d
+Process uptime: not available
+
+Thread 0 (crashed)
+ 0  libcbreakpad.so + 0x2e37d
+    eip = 0xf72d637d   esp = 0x0083849e   ebp = 0xff968b68   ebx = 0xf7309000
+    esi = 0xff968c18   edi = 0xff968b98   eax = 0x00000000   ecx = 0x00000001
+    edx = 0x00000000   efl = 0xf72b0c20
+    Found by: given as instruction pointer in context
+ 1  libcbreakpad.so + 0x2c665
+    eip = 0xf72d4665   esp = 0xff968b70   ebp = 0xff968cc8
+    Found by: previous frame's frame pointer
+ 2  xmvlog_cg!vserror + 0xc0
+    eip = 0x086d9260   esp = 0xff968cd0   ebp = 0xf71af580
+    Found by: previous frame's frame pointer
+ 3  xmvlog_cg!serror + 0x1a
+    eip = 0x086da6fa   esp = 0xff968ed0   ebp = 0xf71af580   ebx = 0x00000000
+    esi = 0x0a4ec6b0   edi = 0x00000000
+    Found by: call frame info
+ 4  xmvlog_cg!gq_sf_feof + 0x181
+    eip = 0x082031c1   esp = 0xff968ef0   ebp = 0xf71af580   ebx = 0x00000204
+    esi = 0x0a4ec6b0   edi = 0x00000000
+    Found by: call frame info
+ 5  xmvlog_cg!gq_inline_system_function_call + 0x590
+    eip = 0x081defc0   esp = 0xff968f20   ebp = 0xf71833c0   ebx = 0x00000204
+    esi = 0x0a4ec6b0   edi = 0xf71833c0
+    Found by: call frame info
+ 6  xmvlog_cg!gq_e_sfunction_call + 0x14e
+    eip = 0x081e276e   esp = 0xff968f40   ebp = 0xf71833c0   ebx = 0x0a51efb8
+    esi = 0x0a4dba34   edi = 0x0a4eccd8
+    Found by: call frame info
+ 7  xmvlog_cg!gq_qeval + 0x196e
+    eip = 0x080c164e   esp = 0xff968f80   ebp = 0x00000001   ebx = 0x0a51efb8
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+ 8  xmvlog_cg!gq_conv + 0x3f
+    eip = 0x080d33ff   esp = 0xff969010   ebp = 0x00000001   ebx = 0x0a51ef68
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+ 9  xmvlog_cg!gq_qeval + 0x88
+    eip = 0x080bfd68   esp = 0xff9690d0   ebp = 0x00000001   ebx = 0x0a51ef68
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+10  xmvlog_cg!gq_e_unary + 0x2f
+    eip = 0x08107cff   esp = 0xff969150   ebp = 0x00000001   ebx = 0x0a51f1a8
+    esi = 0x0a51f158   edi = 0x00000001
+    Found by: call frame info
+11  xmvlog_cg!gq_qeval + 0xbe7
+    eip = 0x080c08c7   esp = 0xff969190   ebp = 0x00000001   ebx = 0x0a51f1a8
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+12  xmvlog_cg!gq_conv + 0x3f
+    eip = 0x080d33ff   esp = 0xff969220   ebp = 0x00000001   ebx = 0x0a51f158
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+13  xmvlog_cg!gq_qeval + 0x88
+    eip = 0x080bfd68   esp = 0xff9692e0   ebp = 0x00000001   ebx = 0x0a51f158
+    esi = 0x0a51f158   edi = 0x00000010
+    Found by: call frame info
+14  xmvlog_cg!gq_aeval_default + 0x2ee
+    eip = 0x080fc3ee   esp = 0xff969360   ebp = 0x00000000   ebx = 0x00000030
+    esi = 0x0a51f158   edi = 0x00000001
+    Found by: call frame info
+15  xmvlog_cg!gq_eval + 0x6e
+    eip = 0x080882ae   esp = 0xff9693b0   ebp = 0x0a4ec6d0   ebx = 0x0a51f158
+    esi = 0xff9693cc   edi = 0x0a4ec6d0
+    Found by: call frame info
+16  xmvlog_cg!gq_logeval_default + 0xdfe
+    eip = 0x080d21ee   esp = 0xff9693e0   ebp = 0x0a4ec6d0   ebx = 0xff969470
+    esi = 0x00000000   edi = 0x0a4ec6b0
+    Found by: call frame info
+17  xmvlog_cg!gq_condtob + 0x14f
+    eip = 0x0818dbdf   esp = 0xff969450   ebp = 0x00000000   ebx = 0x0a4ec6d0
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+18  xmvlog_cg!gq_for + 0x2c8
+    eip = 0x081bda38   esp = 0xff969690   ebp = 0x00000960   ebx = 0x00000000
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+19  xmvlog_cg!gqxx_execute_loop_architecture + 0x19
+    eip = 0x08297eb9   esp = 0xff969840   ebp = 0x0a4ec610   ebx = 0x0a4ec8f8
+    esi = 0x00000000   edi = 0x00000001
+    Found by: call frame info
+20  xmvlog_cg!gq_stmt_nodelay + 0x40e
+    eip = 0x081b517e   esp = 0xff969860   ebp = 0x0a4ec610   ebx = 0x0a4ec8f8
+    esi = 0x00000000   edi = 0x00000001
+    Found by: call frame info
+21  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff9698d0   ebp = 0xf71833c0   ebx = 0x00000000
+    esi = 0x0a4ec8f8   edi = 0x00000000
+    Found by: call frame info
+22  xmvlog_cg!gq_stmts + 0x53d
+    eip = 0x081cfcbd   esp = 0xff969930   ebp = 0xff969998   ebx = 0x0a4ec930
+    esi = 0x00000001   edi = 0x0a4ec8f8
+    Found by: call frame info
+23  xmvlog_cg!gq_seq_block + 0x11c
+    eip = 0x081d256c   esp = 0xff9699d0   ebp = 0x0a4ec998   ebx = 0x0a4ec610
+    esi = 0x00000000   edi = 0x0a4ec610
+    Found by: call frame info
+24  xmvlog_cg!gq_stmt_nodelay + 0x75c
+    eip = 0x081b54cc   esp = 0xff969b00   ebp = 0x0a4ec998   ebx = 0x0a4ec610
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+25  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff969b60   ebp = 0x00000000   ebx = 0x00000000
+    esi = 0x0a4ec610   edi = 0x00000000
+    Found by: call frame info
+26  xmvlog_cg!gq_while + 0x500
+    eip = 0x081c0c20   esp = 0xff969bc0   ebp = 0x000005dc   ebx = 0xf71ae068
+    esi = 0x00000000   edi = 0x00000001
+    Found by: call frame info
+27  xmvlog_cg!gqxx_execute_loop_architecture + 0x19
+    eip = 0x08297eb9   esp = 0xff969cb0   ebp = 0x0a4ec580   ebx = 0x0a4ec998
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+28  xmvlog_cg!gq_stmt_nodelay + 0x3c8
+    eip = 0x081b5138   esp = 0xff969cd0   ebp = 0x0a4ec580   ebx = 0x0a4ec998
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+29  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff969d40   ebp = 0xf7183308   ebx = 0x00000000
+    esi = 0x0a4ec998   edi = 0x00000000
+    Found by: call frame info
+30  xmvlog_cg!gq_stmts + 0x53d
+    eip = 0x081cfcbd   esp = 0xff969da0   ebp = 0xff969e08   ebx = 0x00000000
+    esi = 0x00000001   edi = 0x0a4ec998
+    Found by: call frame info
+31  xmvlog_cg!gq_seq_block + 0x11c
+    eip = 0x081d256c   esp = 0xff969e40   ebp = 0x0a4ec9b8   ebx = 0x0a4ec580
+    esi = 0x00000000   edi = 0x0a4ec580
+    Found by: call frame info
+32  xmvlog_cg!gq_stmt_nodelay + 0x75c
+    eip = 0x081b54cc   esp = 0xff969f70   ebp = 0x0a4ec9b8   ebx = 0x0a4ec580
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+33  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff969fd0   ebp = 0x00000000   ebx = 0x00000000
+    esi = 0x0a4ec580   edi = 0x00000000
+    Found by: call frame info
+34  xmvlog_cg!gq_if + 0xb64
+    eip = 0x081c39b4   esp = 0xff96a030   ebp = 0x0a4ec9b8   ebx = 0x0a4ec580
+    esi = 0xf71acdb8   edi = 0x00000000
+    Found by: call frame info
+35  xmvlog_cg!gq_stmt_nodelay + 0x5fe
+    eip = 0x081b536e   esp = 0xff96a100   ebp = 0x0a4ebcb0   ebx = 0x0a4ec9b8
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+36  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff96a160   ebp = 0xf7183030   ebx = 0x00000000
+    esi = 0x0a4ec9b8   edi = 0x00000000
+    Found by: call frame info
+37  xmvlog_cg!gq_stmts + 0x53d
+    eip = 0x081cfcbd   esp = 0xff96a1c0   ebp = 0xff96a228   ebx = 0x0a4ec9e0
+    esi = 0x00000001   edi = 0x0a4ec9b8
+    Found by: call frame info
+38  xmvlog_cg!gq_seq_block + 0x11c
+    eip = 0x081d256c   esp = 0xff96a260   ebp = 0x00000000   ebx = 0x0a4eca38
+    esi = 0x00000000   edi = 0x0a4ebcb0
+    Found by: call frame info
+39  xmvlog_cg!gq_stmt_nodelay + 0x75c
+    eip = 0x081b54cc   esp = 0xff96a390   ebp = 0x00000000   ebx = 0x0a4ebcb0
+    esi = 0x00000000   edi = 0x00000000
+    Found by: call frame info
+40  xmvlog_cg!gq_stmt + 0x28d
+    eip = 0x081b8cfd   esp = 0xff96a3f0   ebp = 0x00000000   ebx = 0x00000000
+    esi = 0x0a4ebcb0   edi = 0x00000000
+    Found by: call frame info
+41  xmvlog_cg!gq_streams + 0x3e7e
+    eip = 0x0816fdde   esp = 0xff96a450   ebp = 0x0a48c6c0   ebx = 0x00000000
+    esi = 0x0a4db75c   edi = 0x0a4eca38
+    Found by: call frame info
+42  xmvlog_cg!process + 0xcf0
+    eip = 0x0812ccf0   esp = 0xff96a510   ebp = 0xff96e5d8   ebx = 0x00000001
+    esi = 0x0a48c6c0   edi = 0x0a48c6c0
+    Found by: call frame info
+43  xmvlog_cg!main + 0x9f8
+    eip = 0x080555d8   esp = 0xff96e5e0   ebp = 0xff96e638   ebx = 0xff96e6e4
+    esi = 0x0000004e   edi = 0x00000000
+    Found by: call frame info
+44  libc-2.17.so + 0x1a2d3
+    eip = 0xf732d2d3   esp = 0xff96e640   ebp = 0x00000000
+    Found by: previous frame's frame pointer
+45  xmvlog_cg!__divmoddi4 [libgcc2.c : 1173 + 0x5]
+    eip = 0x08772710   esp = 0xff96e644   ebp = 0x00000000
+    Found by: stack scanning
+
+Loaded modules:
+0x08048000 - 0x08c27fff  xmvlog_cg  ???  (main)
+0xf72a8000 - 0xf730afff  libcbreakpad.so  ???  (WARNING: No symbols, libcbreakpad.so, 3612D8A3E98D657A4EC482474ABD6E880)
+0xf7313000 - 0xf74d6fff  libc-2.17.so  ???  (WARNING: No symbols, libc-2.17.so, 096514C244D0321C893889B0D3C2B2320)
+0xf74d7000 - 0xf74dafff  libc-2.17.so  ???
+0xf74de000 - 0xf74fafff  libgcc_s.so.1  ???
+0xf74fb000 - 0xf753cfff  libm-2.17.so  ???
+0xf753d000 - 0xf7711fff  libstdc++.so.6.0.28  ???
+0xf7715000 - 0xf7719fff  libdl-2.17.so  ???
+0xf771a000 - 0xf7732fff  libpthread-2.17.so  ???
+0xf7756000 - 0xf7756fff  linux-gate.so  ???
+0xf7757000 - 0xf777afff  ld-2.17.so  ???
+
+******BACKTRACE*****
+vserror [0x86d9260]
+serror [0x86da6fa]
+gq_sf_feof [0x82031c1]
+gq_inline_system_function_call [0x81defc0]
+gq_e_sfunction_call [0x81e276e]
+gq_qeval [0x80c164e]
+gq_conv [0x80d33ff]
+gq_qeval [0x80bfd68]
+gq_e_unary [0x8107cff]
+gq_qeval [0x80c08c7]
+gq_conv [0x80d33ff]
+gq_qeval [0x80bfd68]
+gq_aeval_default [0x80fc3ee]
+gq_eval [0x80882ae]
+gq_logeval_default [0x80d21ee]
+gq_condtob [0x818dbdf]
+gq_for [0x81bda38]
+gqxx_execute_loop_architecture [0x8297eb9]
+gq_stmt_nodelay [0x81b517e]
+gq_stmt [0x81b8cfd]
+gq_stmts [0x81cfcbd]
+gq_seq_block [0x81d256c]
+gq_stmt_nodelay [0x81b54cc]
+gq_stmt [0x81b8cfd]
+gq_while [0x81c0c20]
+gqxx_execute_loop_architecture [0x8297eb9]
+gq_stmt_nodelay [0x81b5138]
+gq_stmt [0x81b8cfd]
+gq_stmts [0x81cfcbd]
+gq_seq_block [0x81d256c]
+gq_stmt_nodelay [0x81b54cc]
+gq_stmt [0x81b8cfd]
+gq_if [0x81c39b4]
+gq_stmt_nodelay [0x81b536e]
+gq_stmt [0x81b8cfd]
+gq_stmts [0x81cfcbd]
+gq_seq_block [0x81d256c]
+gq_stmt_nodelay [0x81b54cc]
+gq_stmt [0x81b8cfd]
+gq_streams [0x816fdde]
+process [0x812ccf0]
+main [0x80555d8]
+_start [0x80567c6]
+******BACKTRACE END*****
