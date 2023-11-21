@@ -80,6 +80,7 @@ covergroup zeros_or_ones_on_ops;
 	    bins zeros_ones_cross   = binsof (a_leg.zeros)  && binsof (b_leg.ones);
 	    bins ones_zeros_cross   = binsof (a_leg.ones) 	&& binsof (b_leg.zeros);
     }
+    
 
 endgroup
 //------------------------------------------------------------------------------

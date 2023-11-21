@@ -28,19 +28,19 @@ class random_tpgen extends base_tpgen;
 //------------------------------------------------------------------------------
     protected function logic signed [15:0] get_data();
 
-    	bit [1:0] zero_ones;
-    	zero_ones = 2'($random);
+    	bit [3:0] zero_ones;
+    	zero_ones = 4'($random);
 
-    	if (zero_ones == 2'b00)
+    	if (zero_ones == 4'b0000)
         	return 16'sh8000; 
-    	else if (zero_ones == 2'b11)
+    	else if (zero_ones == 4'b1111)
         	return 16'sh7FFF;  
     	else
         	return 16'($random);
 	endfunction : get_data
 
-
-		protected function logic [3:0] get_parity(
+	
+	protected function logic [3:0] get_parity(
 		logic signed [15:0] arg_a,
 		logic signed [15:0] arg_b
 		);
@@ -54,7 +54,6 @@ class random_tpgen extends base_tpgen;
 
     	zero_ones = 1'($random);
 		zero_ones_2 = 1'($random);
-	
 	
     	if (zero_ones == 1'b1)begin
 	    	arg_a_parity=~^arg_a;

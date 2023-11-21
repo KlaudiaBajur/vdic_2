@@ -24,7 +24,7 @@ class add_tpgen extends random_tpgen;
     endfunction : new
 
 
-    protected function logic signed [15:0] get_data();
+	protected function logic signed [15:0] get_data();
     	bit zero_ones;
     	zero_ones = 1'($random);
 
@@ -33,6 +33,42 @@ class add_tpgen extends random_tpgen;
     	else
         	return 16'sh7FFF;
 	endfunction : get_data
+	
+	protected function logic [3:0] get_parity(
+		logic signed [15:0] arg_a,
+		logic signed [15:0] arg_b
+		);
+    	bit zero_ones;
+		bit zero_ones_2;
+		bit counter;
+		logic arg_a_parity;
+		logic arg_b_parity;
+		bit flag_arg_a_parity;
+		bit flag_arg_b_parity;
 
+    	zero_ones = 1'($random);
+		zero_ones_2 = 1'($random);
+	
+    	if (zero_ones == 1'b1)begin
+	    	arg_a_parity=~^arg_a;
+    		flag_arg_a_parity =1'b1;
+		end
+    	else if (zero_ones == 1'b0) begin
+        	arg_a_parity=^arg_a;
+	    	flag_arg_a_parity=1'b0;
+		end
+    	if (zero_ones_2 == 1'b1) begin
+	    	arg_b_parity=~^arg_a;
+    		flag_arg_b_parity =1'b1;
+		end
+    	else if (zero_ones_2 == 1'b0) begin
+        	arg_b_parity=^arg_b;
+	    	flag_arg_b_parity=1'b0;
+    	end
+    	return {arg_a_parity,arg_b_parity,flag_arg_a_parity,flag_arg_b_parity}; 
+   
+	endfunction : get_parity
+
+    
 
 endclass : add_tpgen

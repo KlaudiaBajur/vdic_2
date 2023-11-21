@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 21, 2023 at 20:27:41 CET
+TOOL:	xrun	21.03-s009: Started on Nov 21, 2023 at 22:06:43 CET
 xrun
 	-F ../tb/tb.f
 		mult_pkg.sv
@@ -57,12 +57,12 @@ uvm_test_top      random_test   -     @1925
     tpgen_h       random_tpgen  -     @2034
 -------------------------------------------
 
-UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_objection.svh(1271) @ 61690000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_objection.svh(1271) @ 689070000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 [1;30m[102m-----------------------------------
 ----------- Test PASSED -----------
 -----------------------------------[0m
 
-UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_catcher.svh(705) @ 61690000: reporter [UVM/REPORT/CATCHER] 
+UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_catcher.svh(705) @ 689070000: reporter [UVM/REPORT/CATCHER] 
 --- UVM Report catcher Summary ---
 
 
@@ -73,7 +73,7 @@ Number of caught UVM_FATAL reports   :    0
 Number of caught UVM_ERROR reports   :    0
 Number of caught UVM_WARNING reports :    0
 
-UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(847) @ 61690000: reporter [UVM/REPORT/SERVER] 
+UVM_INFO /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(847) @ 689070000: reporter [UVM/REPORT/SERVER] 
 --- UVM Report Summary ---
 
 ** Report counts by severity
@@ -87,7 +87,7 @@ UVM_FATAL :    0
 [UVM/REPORT/CATCHER]     1
 [UVMTOP]     1
 
-Simulation complete via $finish(1) at time 61690 NS + 59
+Simulation complete via $finish(1) at time 689070 NS + 60
 /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:543     $finish;
 xcelium> exit
 See ./cov_work/scope/random_test/icc.com file for message(s) on coverage constant object marking
@@ -101,4 +101,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_222266bb_24a54a11.ucm
   data               :  ./cov_work/scope/random_test/icc_222266bb_24a54a11.ucd
-TOOL:	xrun	21.03-s009: Exiting on Nov 21, 2023 at 20:27:42 CET  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Nov 21, 2023 at 22:06:44 CET  (total: 00:00:01)

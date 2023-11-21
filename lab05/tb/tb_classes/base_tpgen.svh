@@ -34,7 +34,43 @@ virtual class base_tpgen extends uvm_component;
 // function prototypes
 //------------------------------------------------------------------------------
     pure virtual protected function logic signed [15:0] get_data();
-    pure virtual protected function logic [3:0] get_parity(logic signed [15:0] arg_a, logic signed [15:0] arg_b );
+    //pure virtual protected function logic [3:0] get_parity(logic signed [15:0] arg_a, logic signed [15:0] arg_b );
+
+
+	protected function logic [3:0] get_parity(
+		logic signed [15:0] arg_a,
+		logic signed [15:0] arg_b
+		);
+    	bit zero_ones;
+		bit zero_ones_2;
+		bit counter;
+		logic arg_a_parity;
+		logic arg_b_parity;
+		bit flag_arg_a_parity;
+		bit flag_arg_b_parity;
+
+    	zero_ones = 1'($random);
+		zero_ones_2 = 1'($random);
+	
+    	if (zero_ones == 1'b1)begin
+	    	arg_a_parity=~^arg_a;
+    		flag_arg_a_parity =1'b1;
+		end
+    	else if (zero_ones == 1'b0) begin
+        	arg_a_parity=^arg_a;
+	    	flag_arg_a_parity=1'b0;
+		end
+    	if (zero_ones_2 == 1'b1) begin
+	    	arg_b_parity=~^arg_a;
+    		flag_arg_b_parity =1'b1;
+		end
+    	else if (zero_ones_2 == 1'b0) begin
+        	arg_b_parity=^arg_b;
+	    	flag_arg_b_parity=1'b0;
+    	end
+    	return {arg_a_parity,arg_b_parity,flag_arg_a_parity,flag_arg_b_parity}; 
+   
+	endfunction : get_parity
 
 //------------------------------------------------------------------------------
 // build phase
@@ -62,7 +98,7 @@ virtual class base_tpgen extends uvm_component;
 
         bfm.reset();
 
-        repeat (1000) begin : random_loop
+        repeat (10000) begin : random_loop
             iA = get_data();
         	iB = get_data();
 	    	{iA_parity, iB_parity, flag_arg_a_parity, flag_arg_b_parity }= get_parity(iA, iB); 

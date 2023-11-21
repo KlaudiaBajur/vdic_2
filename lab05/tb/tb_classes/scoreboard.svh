@@ -55,9 +55,12 @@ class scoreboard extends uvm_component;
         super.new(name, parent);
     endfunction : new
 
+
+	
 //------------------------------------------------------------------------------
 // calculate expected result
 //------------------------------------------------------------------------------
+
 
     protected function logic signed [32:0] get_expected(
 		logic signed [15:0] arg_a,

@@ -33,9 +33,8 @@ class add_test extends random_test;
         // set the factory to produce a add_tpgen whenever it would produce
         // a random_tpgen
         random_tpgen::type_id::set_type_override(add_tpgen::get_type());
-
+	    
     endfunction : build_phase
-
 
 endclass
 
