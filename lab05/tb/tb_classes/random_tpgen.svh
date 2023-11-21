@@ -28,12 +28,12 @@ class random_tpgen extends base_tpgen;
 //------------------------------------------------------------------------------
     protected function logic signed [15:0] get_data();
 
-    	bit [2:0] zero_ones;
-    	zero_ones = 3'($random);
+    	bit [1:0] zero_ones;
+    	zero_ones = 2'($random);
 
-    	if (zero_ones == 3'b000)
+    	if (zero_ones == 2'b00)
         	return 16'sh8000; 
-    	else if (zero_ones == 3'b111)
+    	else if (zero_ones == 2'b11)
         	return 16'sh7FFF;  
     	else
         	return 16'($random);
