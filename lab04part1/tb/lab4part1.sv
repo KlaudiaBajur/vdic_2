@@ -14,13 +14,31 @@
  limitations under the License.
  */
 
+
+class points_c;
+		real x;
+		real y;
+		
+	function new(real x_r, real y_r);
+		x = x_r;
+		y = y_r;
+	endfunction
+	
+	function string to_string();
+		string point_str;
+		point_str = $sformatf("(%0.2f, %0.2f)", x, y);
+		return point_str;
+	endfunction
+endclass: points_c
+
+
 virtual class shape_c;
 	string name;
-	real points[$][0:1];
+	protected points_c points[$];
 
-	function new(string name_kb, real points_kb[$][0:1]);
+	function new(string name_kb, points_c points_p[$]);
 		name = name_kb;
-		points = points_kb;
+		points = points_p;
 	endfunction
 	
 	pure virtual function real get_area();
@@ -28,7 +46,7 @@ virtual class shape_c;
 	function void print();
 		$display("This is: %0s ", name);
 		foreach(points[i])
-			$display("(%0f, %0f)", points[i][0], points[i][1]);
+			$display("(%0s)", points[i].to_string());
 		if (get_area() == -1) begin
 			$display("Area is: can not be calculated for generic %s.", name);
 		end
@@ -40,8 +58,11 @@ virtual class shape_c;
 endclass: shape_c
 
 
+
+
 class polygon_c extends shape_c;
-	function new(string name,real points[$][0:1]);
+	
+	function new(string name, points_c points[$]);
 		super.new(name, points);
 	endfunction
 	
@@ -50,8 +71,9 @@ class polygon_c extends shape_c;
 	endfunction: get_area
 endclass: polygon_c
 
+
 class rectangle_c extends shape_c;
-	function new(string name,real points[3][0:1]);
+	function new(string name,points_c points[4]);
 		super.new(name, points);
 	endfunction
 	
@@ -62,9 +84,10 @@ class rectangle_c extends shape_c;
 endclass: rectangle_c
 
 
+
 class triangle_c extends shape_c;
 	
-	function new(string name,real points[2][0:1]);
+	function new(string name,points_c points[3]);
 		super.new(name, points);
 	endfunction
 	
@@ -77,12 +100,12 @@ endclass: triangle_c
 
 
 class circle_c extends shape_c;
-	function new(string name,real points[1][0:1]);
+	function new(string name,points_c points[2]);
 		super.new(name, points);
 	endfunction
 	
 	function real get_radius();
-		real radius = $pow((points[1][0]-points[0][0]), 2) + $pow((points[1][1]-points[0][1]), 2);
+		real radius = $pow((points[1].x-points[0].x), 2) + $pow((points[1].y-points[0].y), 2);
 		return radius;
 	endfunction: get_radius
 	
@@ -95,7 +118,7 @@ class circle_c extends shape_c;
 	
 	function void print();
 		$display("This is: %0s ", name);
-		$display("%0f", points[1][0]);		// circle center
+		$display("%0s", points[0].to_string());		// circle center
 		$display("radius: %0.2f", $sqrt(get_radius()));
 		$display("Area is: %0.2f ", get_area());
 	endfunction : print
@@ -105,6 +128,7 @@ endclass: circle_c
 
 class shape_reporter #(type T = shape_c);
 	protected static T storage[$];
+	//int size = $size.storage;
 	
 	static function void storage_shapes(T shape_c);
 		storage.push_back(shape_c);
@@ -122,14 +146,14 @@ endclass: shape_reporter
 
 class shape_factory_c;
 	
-	static function shape_c make_shape(real points[$][0:1]);
+	static function shape_c make_shape(points_c points[$]);
 		polygon_c polygon;
 		rectangle_c rectangle;
 		triangle_c triangle;
 		circle_c circle;
 		
-		$display("size $d", $size(points));
-		case($size(points))
+		//$display("size $d", $size(points));
+		case(points.size())
 			2 : begin	
 					circle = new("circle", points);
 					shape_reporter#(circle_c)::storage_shapes(circle);
@@ -165,14 +189,18 @@ module top;
 	shape_c shape;
 	
 	initial begin
-		//shape_c shape;
-		real points[$][0:1];
+		points_c points[$];
+		points_c point;
 		int file;
-		real points_table[6][0:1];
+		real points_table[7][0:1];
 		int i;
 		string line;
 		int code;
 		int table_length;
+		int s_ret;
+		byte last_char;
+		real x;
+		real y;
 
 		
 		file = $fopen("../tb/lab04part1_shapes.txt", "r");
@@ -181,6 +209,7 @@ module top;
 			$stop;
 		end
 		else begin 
+			/*
 			while($fgets(line, file)) begin
 				//$display(line);
 		    	code = $sscanf(line, "%0.2f %0.2f \
@@ -188,35 +217,51 @@ module top;
 									%0.2f %0.2f \
 									%0.2f %0.2f \
 									%0.2f %0.2f \
-									%0.2f %0.2f ", 
+									%0.2f %0.2f \
+									%0.2f %0.2f", 
 									
 									points_table[0][0], points_table[0][1],
 									points_table[1][0], points_table[1][1],
 									points_table[2][0], points_table[2][1],
 									points_table[3][0], points_table[3][1],
 									points_table[4][0], points_table[4][1],
-									points_table[5][0], points_table[5][1]);
+									points_table[5][0], points_table[5][1],
+									points_table[6][0], points_table[6][1]);
 			    
 			    //$display(code);
 			    table_length = ((code/2)-1);
 				for(i = 0; i <= (code/2)-1; i++) begin
 					points[i][0] = points_table[i][0];
 					points[i][1] = points_table[i][1];
-					//$display("Points 2: %0f, %0f", points[i][0], points[i][1]);
 				end
-		    	$display("Code: $d", table_length);
-				//$display("size $d", $size(points));
+				$display("Code: $d", code);
+		    	$display("Table length: $d", table_length);
 				shape = shape_factory_c::make_shape(points);
-				shape_reporter#(circle_c)::report_shapes();
-				shape_reporter#(triangle_c)::report_shapes();
-				shape_reporter#(rectangle_c)::report_shapes();
-				shape_reporter#(polygon_c)::report_shapes();
-
 			end	
-		    
+			shape_reporter#(circle_c)::report_shapes();
+			shape_reporter#(triangle_c)::report_shapes();
+			shape_reporter#(rectangle_c)::report_shapes();
+			shape_reporter#(polygon_c)::report_shapes();
+		 */
+		 
+			while (!$feof(file)) begin						// do while until end of file
+				s_ret = $fscanf(file, "%f %f%c", x, y, last_char);
+				point = new(x, y);							// make pair of 2 real numbers (x and y) - point
+				points.push_back(point);					// push points to point_c points
+			
+				if(last_char == "\n") begin					// if end of line in .txt - make shape
+					shape = shape_factory_c::make_shape(points);
+					points.delete();						// clear queue
+				end
+			end
+			$fclose(file);
+			shape_reporter#(circle_c)::report_shapes();
+			shape_reporter#(triangle_c)::report_shapes();
+			shape_reporter#(rectangle_c)::report_shapes();
+			shape_reporter#(polygon_c)::report_shapes();
 		end
 		
-		$fclose(file);
+		
 	end
 
 	

@@ -95,7 +95,7 @@ class tpgen;
         	bfm.send_data(iA, iA_parity, iB, iB_parity, flag_arg_a_parity, flag_arg_b_parity);
 	    	//wait(bfm.result_rdy);
     	end : random_loop
-    	bfm.send_data(iA, iA_parity, iB, iB_parity, flag_arg_a_parity, flag_arg_b_parity);
+    	//bfm.send_data(iA, iA_parity, iB, iB_parity, flag_arg_a_parity, flag_arg_b_parity);
 		bfm.reset();
     
     	

@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 15, 2023 at 17:44:37 CET
+TOOL:	xrun	21.03-s009: Started on Nov 19, 2023 at 21:03:57 CET
 xrun
 	-F ../tb/tb.f
 		mult_pkg.sv
@@ -68,7 +68,7 @@ xcelium> run
 ----------- Test PASSED -----------
 -----------------------------------[0m
 
-Simulation complete via $finish(1) at time 67870 NS + 0
+Simulation complete via $finish(1) at time 67830 NS + 0
 ../tb/top.sv:39     $finish;
 xcelium> exit
 See ./cov_work/scope/lab04part2/icc.com file for message(s) on coverage constant object marking
@@ -82,4 +82,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_2a5e1583_0061d46e.ucm
   data               :  ./cov_work/scope/lab04part2/icc_2a5e1583_0061d46e.ucd
-TOOL:	xrun	21.03-s009: Exiting on Nov 15, 2023 at 17:44:39 CET  (total: 00:00:02)
+TOOL:	xrun	21.03-s009: Exiting on Nov 19, 2023 at 21:03:59 CET  (total: 00:00:02)

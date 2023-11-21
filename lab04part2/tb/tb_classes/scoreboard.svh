@@ -65,7 +65,7 @@ class scoreboard;
 //------------------------------------------------------------------------------
 // Scoreboard
 //------------------------------------------------------------------------------
-	logic start_prev;
+	protected logic start_prev;
 
 
 	protected typedef struct packed {

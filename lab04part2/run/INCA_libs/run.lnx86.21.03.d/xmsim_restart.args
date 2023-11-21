@@ -51,7 +51,7 @@ lab04part2
 +EMGRLOG
 xrun_test_lab04part2.log
 -XLSTIME
-1700066677
+1700424237
 -XLKEEP
 -XLMODE
 ./INCA_libs/run.lnx86.21.03.d
@@ -65,4 +65,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun	21.03-s009"
 -XLNAME
-./INCA_libs/run.lnx86.21.03.d/cadence24_4751
+./INCA_libs/run.lnx86.21.03.d/cadence24_14015

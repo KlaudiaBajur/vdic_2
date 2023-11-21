@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 16, 2023 at 01:21:46 CET
+TOOL:	xrun	21.03-s009: Started on Nov 16, 2023 at 09:59:18 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -32,32 +32,34 @@ xrun
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-		worklib.top:sv <0x30fe3c6d>
-			streams:   1, words:  6622
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x60f91c17>
-			streams:  44, words: 15236
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x7ef0b5c0>
-			streams:   8, words: 10301
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x4d96e61a>
-			streams:   6, words:  2523
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x40c96ba0>
-			streams:   6, words:  2523
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x4b473bf3>
+		worklib.top:sv <0x2c26360d>
+			streams:   1, words:  3732
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x60bd6270>
+			streams:  44, words: 14473
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x4692f490>
+			streams:   8, words:  9175
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x0b9a5abb>
+			streams:   6, words:  2677
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x3a891da0>
+			streams:   6, words:  2677
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x0befe8f0>
 			streams:   6, words:  2200
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x6c188f06>
-			streams:   9, words:  6052
-		worklib.\$unit_0x50b6e269 :compilation_unit <0x1bec954e>
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x5759c0cb>
+			streams:   9, words:  5654
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x42ffabc1>
+			streams:   8, words:  2511
+		worklib.\$unit_0x50b6e269 :compilation_unit <0x5ed7a6b3>
 			streams:   0, words:     0
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		                    Instances  Unique
-		Modules:                    1       1
-		Registers:                 88      69
-		Initial blocks:             1       1
-		Compilation units:          1       1
-		SV Class declarations:      7       7
-		SV Class specializations:  10      10
+		                     Instances  Unique
+		Modules:                     1       1
+		Registers:                 101      84
+		Initial blocks:              1       1
+		Compilation units:           1       1
+		SV Class declarations:       8       8
+		SV Class specializations:   11      11
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 16, 2023 at 01:21:46 CET  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Nov 16, 2023 at 09:59:19 CET  (total: 00:00:01)

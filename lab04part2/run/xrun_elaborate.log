@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 15, 2023 at 17:44:36 CET
+TOOL:	xrun	21.03-s009: Started on Nov 19, 2023 at 21:03:57 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -39,12 +39,12 @@ xrun
 	Generating native compiled code:
 		worklib.vdic_dut_2023:svp <0x2b668160>
 			streams:  25, words: 13928
-		worklib.top:sv <0x1c4279f6>
+		worklib.top:sv <0x639bec87>
 			streams:  13, words:  3874
-		worklib.mult_pkg:sv <0x329215e9>
+		worklib.mult_pkg:sv <0x1399ac17>
 			streams:  10, words:  5506
-		worklib.mult_pkg:sv <0x59a9b68c>
-			streams:  10, words: 10186
+		worklib.mult_pkg:sv <0x287087fb>
+			streams:  10, words:  8127
 		worklib.mult_pkg:sv <0x489811d5>
 			streams:  12, words:  9202
 		worklib.mult_pkg:sv <0x21e2f99e>
@@ -75,4 +75,4 @@ xrun
 		SV Class specializations:    4       4
 		Simulation timescale:      1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 15, 2023 at 17:44:37 CET  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Nov 19, 2023 at 21:03:57 CET  (total: 00:00:00)
