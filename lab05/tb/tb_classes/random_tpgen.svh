@@ -39,7 +39,7 @@ class random_tpgen extends base_tpgen;
         	return 16'($random);
 	endfunction : get_data
 
-	
+	/*
 	protected function logic [3:0] get_parity(
 		logic signed [15:0] arg_a,
 		logic signed [15:0] arg_b
@@ -75,7 +75,7 @@ class random_tpgen extends base_tpgen;
    
 	endfunction : get_parity
 	
-	
+	*/
 
 endclass : random_tpgen
 

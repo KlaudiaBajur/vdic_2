@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 21, 2023 at 18:47:51 CET
+TOOL:	xrun	21.03-s009: Started on Nov 29, 2023 at 22:27:59 CET
 xrun
 	-compile
 	-l xrun_compile.log
@@ -59,4 +59,4 @@ file: ../tb/../../common/tinyalu/tinyalu.sv
 file: ../tb/top.sv
 	module worklib.top:sv
 		errors: 0, warnings: 0
-TOOL:	xrun	21.03-s009: Exiting on Nov 21, 2023 at 18:47:53 CET  (total: 00:00:02)
+TOOL:	xrun	21.03-s009: Exiting on Nov 29, 2023 at 22:28:00 CET  (total: 00:00:01)

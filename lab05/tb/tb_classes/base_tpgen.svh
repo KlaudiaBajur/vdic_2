@@ -36,7 +36,7 @@ virtual class base_tpgen extends uvm_component;
     pure virtual protected function logic signed [15:0] get_data();
     //pure virtual protected function logic [3:0] get_parity(logic signed [15:0] arg_a, logic signed [15:0] arg_b );
 
-
+    
 	protected function logic [3:0] get_parity(
 		logic signed [15:0] arg_a,
 		logic signed [15:0] arg_b
@@ -71,7 +71,7 @@ virtual class base_tpgen extends uvm_component;
     	return {arg_a_parity,arg_b_parity,flag_arg_a_parity,flag_arg_b_parity}; 
    
 	endfunction : get_parity
-
+	
 //------------------------------------------------------------------------------
 // build phase
 //------------------------------------------------------------------------------

@@ -84,6 +84,7 @@ class scoreboard extends uvm_component;
 		return{ret, arg_parity_error};
 	endfunction : get_expected
 
+	
 //------------------------------------------------------------------------------
 // local tasks
 //------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 21, 2023 at 22:06:40 CET
+TOOL:	xrun	21.03-s009: Started on Nov 29, 2023 at 22:28:35 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -123,23 +123,23 @@ xrun
 			streams:   9, words:  5026
 		worklib.cdns_uvm_pkg:sv <0x58078155>
 			streams:  10, words:  8472
-		worklib.uvm_pkg:sv <0x57041418>
+		worklib.uvm_pkg:sv <0x12ffac5e>
 			streams:  23, words: 21994
-		worklib.mult_pkg:sv <0x527bd5f0>
+		worklib.mult_pkg:sv <0x579324c1>
 			streams:  24, words: 22686
 		worklib.uvm_pkg:sv <0x53d557f8>
 			streams:   7, words:  2972
-		worklib.uvm_pkg:sv <0x7fcc8d6e>
+		worklib.uvm_pkg:sv <0x52b6d5f1>
 			streams:  24, words: 24532
 		worklib.uvm_pkg:sv <0x15ec81e1>
 			streams:  28, words: 33926
-		worklib.uvm_pkg:sv <0x4327b146>
+		worklib.uvm_pkg:sv <0x7560a537>
 			streams:  31, words: 43143
-		worklib.uvm_pkg:sv <0x12087f3d>
-			streams:  24, words: 22535
-		worklib.mult_pkg:sv <0x22ebb351>
-			streams:  24, words: 22704
-		worklib.mult_pkg:sv <0x1baa09e8>
+		worklib.uvm_pkg:sv <0x032d3987>
+			streams:  23, words: 21008
+		worklib.mult_pkg:sv <0x1badee03>
+			streams:  23, words: 21177
+		worklib.mult_pkg:sv <0x48503ffb>
 			streams:   9, words: 13057
 		worklib.top:sv <0x7f93f68d>
 			streams:  81, words: 120919
@@ -163,7 +163,7 @@ xrun
 		Modules:                       2       2
 		Interfaces:                    1       1
 		Verilog packages:              5       5
-		Registers:                 15829   11690
+		Registers:                 15809   11670
 		Scalar wires:                 17       -
 		Vectored wires:               10       -
 		Named events:                  4      12
@@ -178,4 +178,4 @@ xrun
 		SV Class specializations:    416     416
 		Simulation timescale:        1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 21, 2023 at 22:06:43 CET  (total: 00:00:03)
+TOOL:	xrun	21.03-s009: Exiting on Nov 29, 2023 at 22:28:39 CET  (total: 00:00:04)

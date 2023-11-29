@@ -43,8 +43,6 @@ RNDXCELON
 SAWSTP
 -NOCOPYRIGHT
 -COVOVERWRITE
--COVTEST
-add_test
 +UVM_TESTNAME=add_test
 -MESSAGES
 -RUN
@@ -53,7 +51,7 @@ add_test
 +EMGRLOG
 xrun_test_add_test.log
 -XLSTIME
-1700588877
+1701293284
 -XLKEEP
 -XLMODE
 ./INCA_libs/run.lnx86.21.03.d

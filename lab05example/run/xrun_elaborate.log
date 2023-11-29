@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 21, 2023 at 18:47:53 CET
+TOOL:	xrun	21.03-s009: Started on Nov 29, 2023 at 22:28:00 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -189,4 +189,4 @@ xrun
 		SV Class specializations:    416     416
 		Simulation timescale:        1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 21, 2023 at 18:47:56 CET  (total: 00:00:03)
+TOOL:	xrun	21.03-s009: Exiting on Nov 29, 2023 at 22:28:04 CET  (total: 00:00:04)

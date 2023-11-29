@@ -34,6 +34,7 @@ class add_tpgen extends random_tpgen;
         	return 16'sh7FFF;
 	endfunction : get_data
 	
+	/*
 	protected function logic [3:0] get_parity(
 		logic signed [15:0] arg_a,
 		logic signed [15:0] arg_b
@@ -69,6 +70,6 @@ class add_tpgen extends random_tpgen;
    
 	endfunction : get_parity
 
-    
+    */
 
 endclass : add_tpgen

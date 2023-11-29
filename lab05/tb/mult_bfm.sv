@@ -34,8 +34,6 @@ bit flag_arg_a_parity;
 bit flag_arg_b_parity;
 
 
-
-
 task reset();
     req     = 1'b0;
     rst_n = 1'b0;
