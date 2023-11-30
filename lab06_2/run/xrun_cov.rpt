@@ -24,7 +24,7 @@ name                                     Overall Average      Overall Covered   
 uvm_pkg                                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
 |--uvm_test_top                          n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
 | |--env_h                               n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
-| | |--coverage_h                        70.83%               78.26% (18/23)       n/a                  n/a                  n/a                  n/a                  70.83%               78.26% (18/23)       
+| | |--coverage_h                        100.00%              100.00% (23/23)      n/a                  n/a                  n/a                  n/a                  100.00%              100.00% (23/23)      
 top                                      100.00%              100.00% (2/2)        100.00%              100.00% (2/2)        n/a                  n/a                  n/a                  n/a                  
-|--bfm                                   96.39%               96.91% (94/97)       96.39%               96.91% (94/97)       n/a                  n/a                  n/a                  n/a                  
+|--bfm                                   97.73%               98.97% (96/97)       97.73%               98.97% (96/97)       n/a                  n/a                  n/a                  n/a                  
 |--DUT                                   100.00%              100.00% (73/73)      100.00%              100.00% (73/73)      n/a                  n/a                  n/a                  n/a                  

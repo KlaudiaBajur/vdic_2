@@ -23,24 +23,24 @@ virtual class base_tpgen extends uvm_component;
 		logic signed [15:0] arg_a,
 		logic signed [15:0] arg_b
 		);
-    	bit [3:0] zero_ones;
-		bit [3:0] zero_ones_2;
+    	bit  zero_ones;
+		bit  zero_ones_2;
 		bit counter;
 		logic arg_a_parity;
 		logic arg_b_parity;
 		bit flag_arg_a_parity;
 		bit flag_arg_b_parity;
 
-    	zero_ones = 3'($random);
-		zero_ones_2 = 3'($random);
+    	zero_ones = 1'($random);
+		zero_ones_2 = 1'($random);
 	
-    	if (zero_ones == 3'b111)begin
-	    	arg_a_parity=^arg_a;
-    		flag_arg_a_parity =1'b0;
+    	if (zero_ones == 1'b1)begin
+	    	arg_a_parity=~^arg_a;
+    		flag_arg_a_parity =1'b1;
 		end
     	else if (zero_ones == 1'b0) begin
-        	arg_a_parity=~^arg_a;
-	    	flag_arg_a_parity=1'b1;
+        	arg_a_parity=^arg_a;
+	    	flag_arg_a_parity=1'b0;
 		end
     	if (zero_ones_2 == 1'b1) begin
 	    	arg_b_parity=~^arg_a;

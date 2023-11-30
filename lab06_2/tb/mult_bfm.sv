@@ -53,7 +53,9 @@ task send_data(
 	input logic signed 	[15:0] 	iA,
 	input logic               	iA_parity,
 	input logic signed 	[15:0] 	iB,
-	input logic               	iB_parity
+	input logic               	iB_parity,
+	bit flag_arg_a_parity_tpgen,
+	bit flag_arg_b_parity_tpgen
 	);
 	
 	if(irst) begin
@@ -64,6 +66,8 @@ task send_data(
 	    arg_b = iB;
 		arg_a_parity = iA_parity;
 		arg_b_parity = iB_parity;
+		flag_arg_a_parity = flag_arg_a_parity_tpgen;
+		flag_arg_b_parity = flag_arg_b_parity_tpgen;
 
 	    req = 1'b1;
 		wait(ack);	// wait until ack == 1

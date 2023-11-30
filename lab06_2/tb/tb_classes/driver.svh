@@ -31,7 +31,7 @@ class driver extends uvm_component;
 
         forever begin : command_loop
             command_port.get(command);
-            bfm.send_data(command.rst_n, command.arg_a, command.flag_arg_a_parity, command.arg_b, command.flag_arg_a_parity);
+            bfm.send_data(command.rst_n, command.arg_a,command.arg_a_parity, command.arg_b, command.arg_b_parity, command.flag_arg_a_parity, command.flag_arg_b_parity);
         end : command_loop
     endtask : run_phase
     

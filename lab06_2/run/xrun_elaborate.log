@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 30, 2023 at 01:51:36 CET
+TOOL:	xrun	21.03-s009: Started on Nov 30, 2023 at 02:32:27 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -124,28 +124,28 @@ xrun
 			streams:   9, words:  5026
 		worklib.cdns_uvm_pkg:sv <0x7f5c992c>
 			streams:  10, words:  8472
-		worklib.uvm_pkg:sv <0x2e7d30bd>
+		worklib.uvm_pkg:sv <0x03251e25>
 			streams:  23, words: 21994
-		worklib.mult_pkg:sv <0x53b90b04>
+		worklib.mult_pkg:sv <0x48e42577>
 			streams:  24, words: 22726
 		worklib.uvm_pkg:sv <0x0324de4a>
 			streams:   7, words:  2972
-		worklib.uvm_pkg:sv <0x42bb7c0d>
+		worklib.uvm_pkg:sv <0x3df5c145>
 			streams:  25, words: 31002
-		worklib.uvm_pkg:sv <0x2942cf97>
-			streams:  33, words: 34361
-		worklib.uvm_pkg:sv <0x20b4cfc7>
+		worklib.uvm_pkg:sv <0x5c2f3493>
+			streams:  33, words: 35217
+		worklib.uvm_pkg:sv <0x6e7733a8>
 			streams:  40, words: 34910
-		worklib.uvm_pkg:sv <0x65108dc0>
-			streams: 121, words: 109912
-		worklib.uvm_pkg:sv <0x517a6759>
+		worklib.uvm_pkg:sv <0x59df101f>
+			streams: 120, words: 108206
+		worklib.uvm_pkg:sv <0x13a70139>
 			streams:  23, words: 20988
-		worklib.mult_pkg:sv <0x66d49271>
+		worklib.mult_pkg:sv <0x351cc23a>
 			streams:  23, words: 21177
-		worklib.mult_pkg:sv <0x2402e326>
-			streams:  18, words: 18225
-		worklib.mult_bfm:sv <0x44036aaf>
-			streams: 289, words: 432397
+		worklib.mult_pkg:sv <0x050762f5>
+			streams:  18, words: 18207
+		worklib.mult_bfm:sv <0x7d420ed3>
+			streams: 289, words: 432959
 		worklib.mult_pkg:sv <0x3434ea58>
 			streams:   1, words:  3427
 		worklib.cdns_uvm_pkg:sv <0x13db5fd4>
@@ -164,7 +164,7 @@ xrun
 		Modules:                       2       2
 		Interfaces:                    1       1
 		Verilog packages:              5       5
-		Registers:                 16417   11723
+		Registers:                 16409   11715
 		Scalar wires:                 17       -
 		Vectored wires:               10       -
 		Named events:                  4      12
@@ -179,4 +179,4 @@ xrun
 		SV Class specializations:    442     442
 		Simulation timescale:        1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 30, 2023 at 01:51:39 CET  (total: 00:00:03)
+TOOL:	xrun	21.03-s009: Exiting on Nov 30, 2023 at 02:32:31 CET  (total: 00:00:04)
