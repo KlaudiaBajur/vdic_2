@@ -23,7 +23,7 @@ class add_tpgen extends random_tpgen;
         super.new(name, parent);
     endfunction : new
 
-
+/*
 	protected function logic signed [15:0] get_data();
     	bit zero_ones;
     	zero_ones = 1'($random);
@@ -33,5 +33,5 @@ class add_tpgen extends random_tpgen;
     	else
         	return 16'sh7FFF;
 	endfunction : get_data
-
+*/
 endclass : add_tpgen

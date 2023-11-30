@@ -88,15 +88,19 @@ virtual class base_tpgen extends uvm_component;
         phase.raise_objection(this);
         command.rst_n = 1;
         command_port.put(command);
+	    command.rst_n = 0;
         repeat (10000) begin : random_loop
-	        command.rst_n = 0;
+	        
             command.arg_a  = get_data();
             command.arg_b  = get_data();
 	        {command.arg_a_parity, command.arg_b_parity, command.flag_arg_a_parity, command.flag_arg_b_parity }= get_parity(command.arg_a, command.arg_b);
 	        //command.op = get_op();
             command_port.put(command);
         end : random_loop
-        //#500;
+        #500;
+        //command.rst_n = 1;
+        command_port.put(command);
+        command_port.put(command);
         phase.drop_objection(this);
     endtask : run_phase
 

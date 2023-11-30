@@ -51,6 +51,16 @@ result_monitor result_monitor_h;
 // DUT reset task
 //------------------------------------------------------------------------------
 
+
+initial begin
+    clk = 0;
+    forever begin
+        #10;
+        clk = ~clk;
+    end
+end
+
+
 task reset();
     req     = 1'b0;
     rst_n = 1'b0;
@@ -69,7 +79,8 @@ task send_data(
 	input logic signed 	[15:0] 	iB,
 	input logic               	iB_parity,
 	bit flag_arg_a_parity_tpgen,
-	bit flag_arg_b_parity_tpgen
+	bit flag_arg_b_parity_tpgen,
+	logic signed [31:0] result
 	);
 
     arg_a = iA;
@@ -111,12 +122,9 @@ always @(posedge clk) begin : op_monitor
     if (req) begin : start_high
             command.arg_a  = arg_a;
             command.arg_b  = arg_b;
-            command.arg_a_parity = arg_a_parity;
-	        command.arg_b_parity = arg_b_parity;
-	        command.flag_arg_a_parity = flag_arg_a_parity;
-	        command.flag_arg_b_parity = flag_arg_b_parity;
+	        command.arg_a_parity = arg_a_parity; //czy to dopisac??
+	    	command.arg_b_parity = arg_b_parity;
 	        command.rst_n = rst_n;
-	    	command.result = result;
             command_monitor_h.write_to_monitor(command);
             //in_command = (command.op != no_op);
     end : start_high
@@ -129,9 +137,6 @@ always @(negedge rst_n) begin : rst_monitor
     command_s command;
     command.rst_n = 0;
     if (command_monitor_h != null) //guard against VCS time 0 negedge
-    	//command.arg_a_parity = arg_a_parity; czy to dopisac??
-	    //command.arg_b_parity = arg_b_parity;
-	    //command.result = result;
         command_monitor_h.write_to_monitor(command);
 end : rst_monitor
 
@@ -145,9 +150,11 @@ initial begin : result_monitor_thread
     forever begin
         @(posedge clk) ;
         if (result_rdy) begin
-	        command.arg_a_parity = arg_a_parity;
-	        command.arg_b_parity = arg_b_parity;
-	        command.result = result;
+	       	command.result = result;
+    		command.flag_arg_a_parity = flag_arg_a_parity;
+	    	command.flag_arg_b_parity = flag_arg_b_parity;
+    		command.arg_a_parity = arg_a_parity; //czy to dopisac??
+	    	command.arg_b_parity = arg_b_parity;
             result_monitor_h.write_to_monitor(command);
 	    end
     end
@@ -157,13 +164,6 @@ end : result_monitor_thread
 // clock generator
 //------------------------------------------------------------------------------
 
-initial begin
-    clk = 0;
-    forever begin
-        #10;
-        clk = ~clk;
-    end
-end
 
 
 

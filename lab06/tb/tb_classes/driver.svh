@@ -43,11 +43,12 @@ class driver extends uvm_component;
 //------------------------------------------------------------------------------
     task run_phase(uvm_phase phase);
         command_s command;
+	    logic signed [31:0] result;
 
         forever begin : command_loop
             command_port.get(command);
-	        bfm.send_data(command.arg_a, command.arg_a_parity, command.arg_b, command.arg_a_parity, command.flag_arg_a_parity, command.flag_arg_b_parity);
-            $display("DRIVER: arg_a: %0d arg_b: %0d, arg_a_parity: %0d arg_ba_parity: %0d.", command.arg_a, command.arg_b, command.arg_a_parity, command.arg_b_parity);
+	        bfm.send_data(command.arg_a, command.arg_a_parity, command.arg_b, command.arg_b_parity, command.flag_arg_a_parity, command.flag_arg_b_parity, result);
+            $display("DRIVER: arg_a: %0d arg_b: %0d, arg_a_parity: %0d arg_b_parity: %0d.", command.arg_a, command.arg_b, command.arg_a_parity, command.arg_b_parity);
         end : command_loop
     endtask : run_phase
     

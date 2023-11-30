@@ -27,10 +27,8 @@ class random_tpgen extends base_tpgen;
 // function: get_data - generate random data for the tpgen
 //------------------------------------------------------------------------------
     protected function logic signed [15:0] get_data();
-
     	bit [3:0] zero_ones;
     	zero_ones = 4'($random);
-
     	if (zero_ones == 4'b0000)
         	return 16'sh8000; 
     	else if (zero_ones == 4'b1111)

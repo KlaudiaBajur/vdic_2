@@ -112,18 +112,18 @@ class scoreboard extends uvm_subscriber #(command_s);
                 $fatal(1, "Missing command in self checker");
         while ( cmd.rst_n == 0 );
 
-        {predicted_result, arg_parity_error} = get_expected(cmd.arg_a, cmd.arg_b, cmd.arg_a_parity, cmd.arg_b_parity);
+        	{predicted_result, arg_parity_error} = get_expected(cmd.arg_a, cmd.arg_b, cmd.arg_a_parity, cmd.arg_b_parity);
 
-        SCOREBOARD_CHECK:
-        assert (predicted_result == t.result && arg_parity_error == ^t.result) begin
-           `ifdef DEBUG
-            $display("%0t Test passed for A=%0d B=%0d", $time, cmd.arg_a, cmd.arg_b);
+        	SCOREBOARD_CHECK:
+        	assert (predicted_result == t.result && arg_parity_error == ^t.result) begin
+           	`ifdef DEBUG
+            	$display("%0t Test passed for A=%0d B=%0d", $time, cmd.arg_a, cmd.arg_b);
             `endif
-        end
-        else begin
-            $error("FAILED: A: %0h  B: %0h  result: %0h  predicted result: %0h", cmd.arg_a, cmd.arg_b, t, predicted_result);
-            tr = TEST_FAILED;
-        end
+        	end
+        	else begin
+            	$error("FAILED: A: %0h  B: %0h  result: %0h  predicted result: %0h", cmd.arg_a, cmd.arg_b, t, predicted_result);
+            	tr = TEST_FAILED;
+        	end
     endfunction : write
 
 //------------------------------------------------------------------------------

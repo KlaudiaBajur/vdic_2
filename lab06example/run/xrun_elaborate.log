@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 29, 2023 at 21:23:03 CET
+TOOL:	xrun	21.03-s009: Started on Nov 29, 2023 at 23:52:17 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -22,6 +22,7 @@ xrun
 		-fsmdebug
 		-uvmlinedebug
 	-v93
+	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -135,28 +136,28 @@ xrun
 			streams:   9, words:  5026
 		worklib.cdns_uvm_pkg:sv <0x7f5c992c>
 			streams:  10, words:  8472
-		worklib.uvm_pkg:sv <0x1117544b>
+		worklib.uvm_pkg:sv <0x2a0496b8>
 			streams:  23, words: 21994
-		worklib.tinyalu_pkg:sv <0x65ab53f6>
+		worklib.tinyalu_pkg:sv <0x50afb3a5>
 			streams:  24, words: 22726
 		worklib.uvm_pkg:sv <0x0324de4a>
 			streams:   7, words:  2972
-		worklib.uvm_pkg:sv <0x31a0c793>
+		worklib.uvm_pkg:sv <0x6417504c>
 			streams:  25, words: 30660
-		worklib.uvm_pkg:sv <0x61d262a2>
+		worklib.uvm_pkg:sv <0x2e805eb9>
 			streams:  33, words: 33824
-		worklib.uvm_pkg:sv <0x75f42c69>
+		worklib.uvm_pkg:sv <0x21348d7b>
 			streams:  40, words: 34300
-		worklib.uvm_pkg:sv <0x120bbdef>
-			streams: 120, words: 107520
-		worklib.uvm_pkg:sv <0x6bc663de>
+		worklib.uvm_pkg:sv <0x6b949350>
+			streams: 120, words: 110059
+		worklib.uvm_pkg:sv <0x1cae0b0d>
 			streams:  23, words: 20799
-		worklib.tinyalu_pkg:sv <0x05fb0a57>
+		worklib.tinyalu_pkg:sv <0x43512aa1>
 			streams:  24, words: 22256
-		worklib.tinyalu_pkg:sv <0x1bd37094>
+		worklib.tinyalu_pkg:sv <0x3eae36f8>
 			streams:  18, words: 15444
-		worklib.tinyalu_bfm:sv <0x03c919cd>
-			streams: 286, words: 432261
+		worklib.tinyalu_bfm:sv <0x62c9617a>
+			streams: 286, words: 434389
 		worklib.tinyalu_pkg:sv <0x40417582>
 			streams:   1, words:  3427
 		worklib.cdns_uvm_pkg:sv <0x13db5fd4>
@@ -191,4 +192,4 @@ xrun
 		SV Class specializations:    442     442
 		Simulation timescale:        1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 29, 2023 at 21:23:07 CET  (total: 00:00:04)
+TOOL:	xrun	21.03-s009: Exiting on Nov 29, 2023 at 23:52:20 CET  (total: 00:00:03)

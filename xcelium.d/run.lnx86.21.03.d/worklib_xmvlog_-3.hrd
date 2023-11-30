@@ -4,9 +4,9 @@
 //
 -sv
 -INCDIR
-lab06/tb/tb_classes
+lab06_2/tb/tb_classes
 -INCDIR
-lab06/tb/.
+lab06_2/tb/.
 -LINEDEBUG
 -UVMLINEDEBUG
 -LINEDEBUG

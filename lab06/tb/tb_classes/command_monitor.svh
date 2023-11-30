@@ -29,6 +29,19 @@ class command_monitor extends uvm_component;
         super.new(name,parent);
     endfunction
 
+
+
+//------------------------------------------------------------------------------
+// monitoring function called from BFM
+//------------------------------------------------------------------------------
+    function void write_to_monitor(command_s cmd); //zmienilam cmd na t
+        `ifdef DEBUG
+        $display("COMMAND MONITOR: arg_a:%0d arg_b:%0d arg_a_parity: %0d arg_b_parity: %0d ", cmd.arg_a, cmd.arg_b, cmd.arg_a_parity, cmd.arg_b_parity);
+        `endif
+        ap.write(cmd);
+    endfunction : write_to_monitor
+
+
 //------------------------------------------------------------------------------
 // build phase
 //------------------------------------------------------------------------------
@@ -41,18 +54,6 @@ class command_monitor extends uvm_component;
         ap                    = new("ap",this);
     endfunction : build_phase
 
-
-
-
-//------------------------------------------------------------------------------
-// monitoring function called from BFM
-//------------------------------------------------------------------------------
-    function void write_to_monitor(command_s cmd);
-        `ifdef DEBUG
-        $display("COMMAND MONITOR: arg_a:%0d arg_b:%0d arg_a_parity: %0d arg_b_parity: %0d", cmd.arg_a, cmd.arg_b, cmd.arg_a_parity, cmd.arg_b_parity);
-        `endif
-        ap.write(cmd);
-    endfunction : write_to_monitor
 
 
 endclass : command_monitor
