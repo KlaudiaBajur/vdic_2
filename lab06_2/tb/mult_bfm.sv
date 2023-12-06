@@ -38,12 +38,12 @@ end
 //------------------------------------------------------------------------------
 // reset task
 //------------------------------------------------------------------------------
-task reset_mult();
+task reset();
 	req = 1'b0;
 	rst_n = 1'b0;
 	@(negedge clk);
 	rst_n = 1'b1;
-endtask: reset_mult
+endtask: reset
 
 //------------------------------------------------------------------------------
 // send_data
@@ -59,7 +59,7 @@ task send_data(
 	);
 	
 	if(irst) begin
-		reset_mult();
+		reset();
 	end
 	else begin
 	    arg_a = iA;
@@ -108,7 +108,7 @@ initial begin : result_monitor_thread
     forever begin
         @(posedge clk) ;
         if (result_rdy) begin
-	        res.result_parity = result_parity;
+	        res.arg_parity_error = arg_parity_error;
 	        res.result = result;
             result_monitor_h.write_to_monitor(res);
 	    end

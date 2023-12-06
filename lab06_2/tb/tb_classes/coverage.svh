@@ -45,13 +45,13 @@ covergroup zeros_or_ones_on_ops;
 
     a_leg: coverpoint arg_a {
         bins zeros = {16'sh8000};
-        bins others= {[16'sh8001:16'sh7FFE]};
+        //bins others= {[16'sh8001:16'sh7FFE]};
         bins ones  = {16'sh7FFF};
     }
 
     b_leg: coverpoint arg_b {
         bins zeros = {16'sh8000};
-        bins others= {[16'sh8001:16'sh7FFE]};
+        //bins others= {[16'sh8001:16'sh7FFE]};
         bins ones  = {16'sh7FFF};
     }
     

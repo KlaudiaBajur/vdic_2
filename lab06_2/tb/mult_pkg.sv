@@ -30,7 +30,7 @@ package mult_pkg;
 	// RESULT data packet
 	typedef struct packed {
 		logic signed 	[31:0] 	result;
-		logic 					result_parity;
+		logic 					arg_parity_error;
 	} result_s;
 
 //------------------------------------------------------------------------------

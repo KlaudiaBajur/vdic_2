@@ -28,7 +28,8 @@ class driver extends uvm_component;
 //------------------------------------------------------------------------------
     task run_phase(uvm_phase phase);
         command_s command;
-
+	    bfm.reset();
+	    	    bfm.reset();
         forever begin : command_loop
             command_port.get(command);
             bfm.send_data(command.rst_n, command.arg_a,command.arg_a_parity, command.arg_b, command.arg_b_parity, command.flag_arg_a_parity, command.flag_arg_b_parity);

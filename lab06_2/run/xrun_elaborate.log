@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 30, 2023 at 02:32:27 CET
+TOOL:	xrun	21.03-s009: Started on Dec 06, 2023 at 14:23:39 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -124,27 +124,27 @@ xrun
 			streams:   9, words:  5026
 		worklib.cdns_uvm_pkg:sv <0x7f5c992c>
 			streams:  10, words:  8472
-		worklib.uvm_pkg:sv <0x03251e25>
+		worklib.uvm_pkg:sv <0x08f37a90>
 			streams:  23, words: 21994
-		worklib.mult_pkg:sv <0x48e42577>
+		worklib.mult_pkg:sv <0x40a6278d>
 			streams:  24, words: 22726
 		worklib.uvm_pkg:sv <0x0324de4a>
 			streams:   7, words:  2972
-		worklib.uvm_pkg:sv <0x3df5c145>
+		worklib.uvm_pkg:sv <0x4740aa6f>
 			streams:  25, words: 31002
-		worklib.uvm_pkg:sv <0x5c2f3493>
-			streams:  33, words: 35217
-		worklib.uvm_pkg:sv <0x6e7733a8>
-			streams:  40, words: 34910
-		worklib.uvm_pkg:sv <0x59df101f>
-			streams: 120, words: 108206
-		worklib.uvm_pkg:sv <0x13a70139>
+		worklib.uvm_pkg:sv <0x7c4c412e>
+			streams:  33, words: 36297
+		worklib.uvm_pkg:sv <0x73501bfb>
+			streams:  40, words: 34582
+		worklib.uvm_pkg:sv <0x7bfa790a>
+			streams: 120, words: 111757
+		worklib.uvm_pkg:sv <0x529c3265>
 			streams:  23, words: 20988
-		worklib.mult_pkg:sv <0x351cc23a>
-			streams:  23, words: 21177
-		worklib.mult_pkg:sv <0x050762f5>
+		worklib.mult_pkg:sv <0x5396a281>
+			streams:  23, words: 21022
+		worklib.mult_pkg:sv <0x5f30a8d7>
 			streams:  18, words: 18207
-		worklib.mult_bfm:sv <0x7d420ed3>
+		worklib.mult_bfm:sv <0x62c84800>
 			streams: 289, words: 432959
 		worklib.mult_pkg:sv <0x3434ea58>
 			streams:   1, words:  3427
@@ -164,7 +164,7 @@ xrun
 		Modules:                       2       2
 		Interfaces:                    1       1
 		Verilog packages:              5       5
-		Registers:                 16409   11715
+		Registers:                 16410   11716
 		Scalar wires:                 17       -
 		Vectored wires:               10       -
 		Named events:                  4      12
@@ -173,10 +173,10 @@ xrun
 		Parallel blocks:              27      28
 		Cont. assignments:            10      10
 		Pseudo assignments:           12      12
-		Assertions:                    4       4
+		Assertions:                    5       5
 		Covergroup Instances:          0       2
 		SV Class declarations:       238     350
 		SV Class specializations:    442     442
 		Simulation timescale:        1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Nov 30, 2023 at 02:32:31 CET  (total: 00:00:04)
+TOOL:	xrun	21.03-s009: Exiting on Dec 06, 2023 at 14:23:43 CET  (total: 00:00:04)
