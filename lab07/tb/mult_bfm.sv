@@ -85,7 +85,7 @@ task send_data(
 		flag_arg_b_parity = flag_arg_b_parity_tpgen;
         
 	    req = 1'b1;
-		wait(ack);	// wait until ack == 1
+		wait(ack);	
 		req = 1'b0;
 		wait(result_rdy);
 	end
@@ -101,7 +101,7 @@ always @(posedge clk) begin
 end
 
 always @(negedge rst_n) begin : rst_monitor
-    if (command_monitor_h != null) //guard against VCS time 0 negedge
+    if (command_monitor_h != null) 
         command_monitor_h.write_to_monitor(0, arg_a, arg_b, arg_a_parity, arg_b_parity, flag_arg_a_parity, flag_arg_b_parity);
 end : rst_monitor
 

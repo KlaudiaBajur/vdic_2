@@ -1,0 +1,99 @@
+/*
+ Copyright 2013 Ray Salemi
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+module mult_tpgen_module(mult_bfm bfm);
+import mult_pkg::*;
+
+//---------------------------------
+// Random data generation functions
+//---------------------------------
+function logic signed [15:0] get_data();
+	bit [2:0] zero_ones;
+    	zero_ones = 3'($random);
+
+    if (zero_ones == 3'b000)
+        return 16'sh8000; 
+    else if (zero_ones == 3'b111)
+        return 16'sh7FFF;  
+    else
+        return 16'($random);
+endfunction : get_data
+
+
+function logic [3:0] get_parity(
+		logic signed [15:0] arg_a,
+		logic signed [15:0] arg_b
+		);
+    	bit  zero_ones;
+		bit  zero_ones_2;
+		bit counter;
+		logic arg_a_parity;
+		logic arg_b_parity;
+		bit flag_arg_a_parity;
+		bit flag_arg_b_parity;
+
+    	zero_ones = 1'($random);
+		zero_ones_2 = 1'($random);
+	
+    	if (zero_ones == 1'b1)begin
+	    	arg_a_parity=!(^arg_a);
+    		flag_arg_a_parity =1'b1;
+		end
+    	else begin
+        	arg_a_parity=^arg_a;
+	    	flag_arg_a_parity=1'b0;
+    	end
+    	
+    	if (zero_ones_2 == 1'b1) begin
+	    	arg_b_parity=!(^arg_a);
+    		flag_arg_b_parity =1'b1;
+		end
+    	else begin
+        	arg_b_parity=^arg_b;
+	    	flag_arg_b_parity=1'b0;
+    	end
+    	return {arg_a_parity,arg_b_parity,flag_arg_a_parity,flag_arg_b_parity}; 
+   
+endfunction : get_parity
+
+	
+//------------------------------------------------------------------------------
+initial begin
+	bit						irst;
+	logic signed 	[15:0] 	iA;
+	logic               	iA_parity;
+	logic signed 	[15:0] 	iB;        
+	logic               	iB_parity;
+	bit flag_arg_a_parity_tpgen;
+	bit flag_arg_b_parity_tpgen;
+
+    bfm.reset_mult();
+    repeat (5000) begin : random_loop
+        iA = get_data();
+        iB = get_data();
+	    {iA_parity, iB_parity, flag_arg_a_parity_tpgen, flag_arg_b_parity_tpgen} = get_parity(iA, iB);
+        bfm.send_data(irst, iA, iA_parity, iB, iB_parity, flag_arg_a_parity_tpgen, flag_arg_b_parity_tpgen );
+	    bfm.wait_ready();	// wait until result is ready
+    end : random_loop
+    
+    // reset until DUT finish processing data
+    bfm.send_data(irst, iA, iA_parity, iB, iB_parity, flag_arg_a_parity_tpgen, flag_arg_b_parity_tpgen);
+    bfm.reset_mult();
+end // initial begin
+
+endmodule : mult_tpgen_module
+
+
+

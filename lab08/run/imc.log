@@ -1,0 +1,19 @@
+imc: *I,RUNLD: Successfully loaded run /home/student/kbajur/VDIC/lab08/run/cov_work/scope/merged_results.
+imc: *W,REPDEP: This is a legacy report and no future enhancement is planned for this report. It is recommended that you use the 'report_metrics' command and generate a dynamic report.
+name                                     Overall Average      Overall Covered      Code Average         Code Covered         Fsm Average          Fsm Covered          Functional Average   Functional Covered   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+uvm_pkg                                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+|--uvm_test_top                          n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| |--env_h                               n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | |--class_mult_agent_h                n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | | |--coverage_h                      100.00%              100.00% (16/16)      n/a                  n/a                  n/a                  n/a                  100.00%              100.00% (16/16)      
+| | |--module_mult_agent_h               n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | | |--coverage_h                      0.00%                0.00% (0/16)         n/a                  n/a                  n/a                  n/a                  0.00%                0.00% (0/16)         
+| | |--module_mult_agent_h2              n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | | |--coverage_h                      100.00%              100.00% (16/16)      n/a                  n/a                  n/a                  n/a                  100.00%              100.00% (16/16)      
+top                                      100.00%              100.00% (3/3)        100.00%              100.00% (3/3)        n/a                  n/a                  n/a                  n/a                  
+|--class_bfm                             92.81%               95.92% (94/98)       92.81%               95.92% (94/98)       n/a                  n/a                  n/a                  n/a                  
+|--class_dut                             98.63%               98.63% (72/73)       98.63%               98.63% (72/73)       n/a                  n/a                  n/a                  n/a                  
+|--module_bfm                            90.64%               94.90% (93/98)       90.64%               94.90% (93/98)       n/a                  n/a                  n/a                  n/a                  
+|--module_dut                            98.63%               98.63% (72/73)       98.63%               98.63% (72/73)       n/a                  n/a                  n/a                  n/a                  
+|--stim_module                           95.45%               94.74% (36/38)       95.45%               94.74% (36/38)       n/a                  n/a                  n/a                  n/a                  

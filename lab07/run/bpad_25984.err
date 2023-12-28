@@ -1,0 +1,113 @@
+Operating system: Linux
+                  0.0.0 Linux 3.10.0-1160.99.1.el7.x86_64 #1 SMP Wed Sep 13 14:19:20 UTC 2023 x86_64
+CPU: x86
+     GenuineIntel family 6 model 60 stepping 3
+     1 CPU
+
+GPU: UNKNOWN
+
+Crash reason:  DUMP_REQUESTED
+Crash address: 0xf731b37d
+Process uptime: not available
+
+Thread 0 (crashed)
+ 0  libcbreakpad.so + 0x2e37d
+    eip = 0xf731b37d   esp = 0x0083849e   ebp = 0xf6fad688   ebx = 0xf734e000
+    esi = 0xf6fad738   edi = 0xf6fad6b8   eax = 0x00000000   ecx = 0x00000001
+    edx = 0x00000000   efl = 0xf72f5c20
+    Found by: given as instruction pointer in context
+ 1  libcbreakpad.so + 0x2c665
+    eip = 0xf7319665   esp = 0xf6fad690   ebp = 0xf6fad7e8
+    Found by: previous frame's frame pointer
+ 2  xmsim + 0x13489d0
+    eip = 0x093909d0   esp = 0xf6fad7f0   ebp = 0xf6fadac8
+    Found by: previous frame's frame pointer
+ 3  xmsim + 0x632c93
+    eip = 0x0867ac93   esp = 0xf6fadad0   ebp = 0xf6fadaf8
+    Found by: previous frame's frame pointer
+ 4  linux-gate.so + 0x410
+    eip = 0xf779d410   esp = 0xf6fadb00   ebp = 0xf6aa53f8
+    Found by: previous frame's frame pointer
+
+Loaded modules:
+0x08048000 - 0x0aaaafff  xmsim  ???  (main)  (WARNING: No symbols, xmsim, FB77C94B2A354310E8927E1F68C53F1B0)
+0x0aaac000 - 0x0ac1ffff  xmsim  ???
+0xf2d6f000 - 0xf2dd8fff  libuvmapi_sv.so  ???
+0xf2dd9000 - 0xf2ddbfff  libuvmapi_sv.so  ???
+0xf2ddc000 - 0xf2e5afff  libuvmapi_generic.so  ???
+0xf2e5b000 - 0xf33e5fff  libucis.so  ???
+0xf33e6000 - 0xf3421fff  libucis.so  ???
+0xf34d1000 - 0xf34e6fff  libz_sh.so  ???
+0xf34e7000 - 0xf34e9fff  libz_sh.so  ???
+0xf403a000 - 0xf403dfff  libxdt.so  ???
+0xf403e000 - 0xf4040fff  libxdt.so  ???
+0xf4084000 - 0xf408afff  libuvmdpi.so  ???
+0xf408b000 - 0xf40abfff  libsdi2-sst2-nld.so  ???
+0xf40ac000 - 0xf412dfff  libdwapi.so  ???
+0xf4171000 - 0xf4187fff  libz.so.1.2.7  ???
+0xf418a000 - 0xf418efff  .nfs0000000009e8202c000000b7  ???
+0xf418f000 - 0xf41a7fff  libsdi-verilog-nld.so  ???
+0xf41a8000 - 0xf52fefff  librnc.so  ???
+0xf6ff7000 - 0xf71d2fff  libStrapNC.so  ???
+0xf71dd000 - 0xf7266fff  libdcapi.so  ???
+0xf7267000 - 0xf7270fff  libdcapi.so  ???
+0xf7272000 - 0xf728afff  libnsl-2.17.so  ???
+0xf728d000 - 0xf7298fff  libnss_nis-2.17.so  ???
+0xf7299000 - 0xf72a5fff  libnss_files-2.17.so  ???
+0xf72ed000 - 0xf734ffff  libcbreakpad.so  ???  (WARNING: No symbols, libcbreakpad.so, 3612D8A3E98D657A4EC482474ABD6E880)
+0xf735a000 - 0xf751dfff  libc-2.17.so  ???
+0xf751e000 - 0xf7521fff  libc-2.17.so  ???
+0xf7525000 - 0xf7541fff  libgcc_s.so.1  ???
+0xf7542000 - 0xf7716fff  libstdc++.so.6.0.28  ???
+0xf771a000 - 0xf775bfff  libm-2.17.so  ???
+0xf775c000 - 0xf7760fff  libdl-2.17.so  ???
+0xf7761000 - 0xf7779fff  libpthread-2.17.so  ???
+0xf777e000 - 0xf7785fff  libuvmpli.so  ???
+0xf7786000 - 0xf778efff  librt-2.17.so  ???
+0xf7792000 - 0xf779bfff  libunicovdirmgr.so  ???
+0xf779d000 - 0xf779dfff  linux-gate.so  ???  (WARNING: No symbols, linux-gate.so, D16C0C99B478EC84532B08275EBC8D500)
+0xf779e000 - 0xf77c1fff  ld-2.17.so  ???
+
+******BACKTRACE*****
+vserror [0x93909d0]
+serror [0x9391e6a]
+sv_seghandler_aux [0x867a6af]
+sv_seghandler [0x867ac93]
+sss_load_trg_data [0x8701f6b]
+sss_trdrv_type [0x86f7be0]
+ssl_net_type [0x8807ad2]
+cov_tog_isvalid_net [0x8e460ba]
+cov_tog_dump_vlog_helper [0x8e5178d]
+cov_tog_dump [0x8e53795]
+cov_data_create_instance.part.0 [0x8e95130]
+sslu_traverse_scopes [0x889c659]
+sslu_traverse_scopes [0x889d904]
+traverseAllDut [0x8e6fe45]
+cov_data_dump [0x8e96ef0]
+cover_dump [0x829d2fd]
+nc_prepare_to_exit [0x81f5cd2]
+nc_fini [0x81f62e9]
+nc_fini2 [0x81f6657]
+scibeginswith [0x937c280]
+ulmSuspend [0x8f29ae7]
+simcmd_run_aux [0x820fa75]
+simcmd_run [0x8211cd2]
+run_command [0x82127da]
+cmd_wrapper [0x85b523a]
+TclInvokeStringCommand [0x8cc42cc]
+Dispatch [0x8cc3d65]
+TclNRRunCallbacks [0x8cc97bb]
+Tcl_EvalObjv [0x8cc983d]
+TclEvalEx [0x8ccba9b]
+Tcl_EvalEx [0x8ccc19e]
+TclNREvalObjEx [0x8ccc294]
+TclEvalObjEx [0x8ccc584]
+Tcl_EvalObjEx [0x8ccc5c4]
+Tcl_RecordAndEvalObj [0x8d6c95e]
+Tcl_RecordAndEval [0x8d6cb34]
+cmd_tcl_run [0x85b918c]
+xncmain [0x81f5259]
+ncmain [0x81f4105]
+main [0x9c8d0c6]
+_start [0x8169d0d]
+******BACKTRACE END*****

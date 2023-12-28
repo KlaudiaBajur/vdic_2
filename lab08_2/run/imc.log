@@ -1,0 +1,17 @@
+imc: *I,RUNLD: Successfully loaded run /home/student/kbajur/VDIC/lab08_2/run/cov_work/scope/merged_results.
+imc: *W,REPDEP: This is a legacy report and no future enhancement is planned for this report. It is recommended that you use the 'report_metrics' command and generate a dynamic report.
+name                                     Overall Average      Overall Covered      Code Average         Code Covered         Fsm Average          Fsm Covered          Functional Average   Functional Covered   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+uvm_pkg                                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+|--uvm_test_top                          n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| |--env_h                               n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | |--class_mult_agent_h                n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | | |--coverage_h                      20.83%               18.75% (3/16)        n/a                  n/a                  n/a                  n/a                  20.83%               18.75% (3/16)        
+| | |--module_mult_agent_h               n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  n/a                  
+| | | |--coverage_h                      70.83%               68.75% (11/16)       n/a                  n/a                  n/a                  n/a                  70.83%               68.75% (11/16)       
+top                                      100.00%              100.00% (3/3)        100.00%              100.00% (3/3)        n/a                  n/a                  n/a                  n/a                  
+|--class_bfm                             96.49%               96.94% (95/98)       96.49%               96.94% (95/98)       n/a                  n/a                  n/a                  n/a                  
+|--class_dut                             100.00%              100.00% (73/73)      100.00%              100.00% (73/73)      n/a                  n/a                  n/a                  n/a                  
+|--module_bfm                            86.32%               83.67% (82/98)       86.32%               83.67% (82/98)       n/a                  n/a                  n/a                  n/a                  
+|--module_dut                            80.82%               80.82% (59/73)       80.82%               80.82% (59/73)       n/a                  n/a                  n/a                  n/a                  
+|--stim_module                           78.99%               80.49% (33/41)       78.99%               80.49% (33/41)       n/a                  n/a                  n/a                  n/a                  
