@@ -20,87 +20,67 @@ class coverage extends uvm_subscriber #(sequence_item);
 // local variables
 //------------------------------------------------------------------------------
 
-    local byte unsigned A;
-    local byte unsigned B;
-    local operation_t op_set;
+    local logic signed 	[15:0] 	arg_a;
+    local logic signed 	[15:0] 	arg_b;
+    local bit flag_arg_a_parity;
+	local bit flag_arg_b_parity;
     
 //------------------------------------------------------------------------------
 // covergroups
 //------------------------------------------------------------------------------
 
-    covergroup op_cov;
+covergroup dut_cov;
 
-        coverpoint op_set {
-            bins single_cycle[] = {[add_op : xor_op], rst_op,no_op};
-            bins multi_cycle    = {mul_op};
+    option.name = "cg_dut_cov";
+	//Test 1, 2, 3, 4 from specification
+	coverpoint flag_arg_a_parity {
+			bins arg_parity_error_flag = {1'b1};
+	    	bins arg_parity_error_no_flag = {1'b0};
+		
+	}
+	
+	coverpoint flag_arg_b_parity {
+			bins arg_parity_error_flag = {1'b1};
+	        bins arg_parity_error_no_flag = {1'b0};
+		
+	}
 
-            bins opn_rst[]      = ([add_op:mul_op] => rst_op);
-            bins rst_opn[]      = (rst_op => [add_op:mul_op]);
+	parity_cross: cross flag_arg_a_parity, flag_arg_b_parity {
+	bins  no_error 	= binsof (flag_arg_a_parity.arg_parity_error_no_flag) 	&& binsof (flag_arg_b_parity.arg_parity_error_no_flag);
+	bins  error_a  	= binsof (flag_arg_a_parity.arg_parity_error_flag) 		&& binsof (flag_arg_b_parity.arg_parity_error_no_flag);
+	bins  error_b  	= binsof (flag_arg_a_parity.arg_parity_error_no_flag) 	&& binsof (flag_arg_b_parity.arg_parity_error_flag);
+	bins  error_a_b = binsof (flag_arg_a_parity.arg_parity_error_flag) 		&& binsof (flag_arg_b_parity.arg_parity_error_flag);
 
-            bins sngl_mul[]     = ([add_op:xor_op],no_op => mul_op);
-            bins mul_sngl[]     = (mul_op => [add_op:xor_op], no_op);
+	}
+endgroup
 
-            bins twoops[]       = ([add_op:mul_op] [* 2]);
-            bins manymult       = (mul_op [* 3:5]);
+covergroup zeros_or_ones_on_ops;
 
-            bins rstmulrst      = (rst_op => mul_op [* 2] => rst_op);
-            bins rstmulrstim    = (rst_op => mul_op [-> 2] => rst_op);
+    option.name = "cg_zeros_or_ones_on_ops";
 
-        }
+    a_leg: coverpoint arg_a {
+        bins zeros = {16'sh8000};
+        //bins others= {[16'sh8001:16'sh7FFE]};
+        bins ones  = {16'sh7FFF};
+    }
 
-    endgroup
+    b_leg: coverpoint arg_b {
+        bins zeros = {16'sh8000};
+        //bins others= {[16'sh8001:16'sh7FFE]};
+        bins ones  = {16'sh7FFF};
+    }
+    
 
-    covergroup zeros_or_ones_on_ops;
+    B_00_FF: cross a_leg, b_leg {
+	    
+	    bins zeros_cross 		= binsof (a_leg.zeros) 	&& binsof (b_leg.zeros);
+	    bins ones_cross 		= binsof (a_leg.ones) 	&& binsof (b_leg.ones);
+	    bins zeros_ones_cross   = binsof (a_leg.zeros)  && binsof (b_leg.ones);
+	    bins ones_zeros_cross   = binsof (a_leg.ones) 	&& binsof (b_leg.zeros);
+    }
+    
 
-        all_ops : coverpoint op_set {
-            ignore_bins null_ops = {rst_op, no_op};}
-
-        a_leg: coverpoint A {
-            bins zeros = {'h00};
-            bins others= {['h01:'hFE]};
-            bins ones  = {'hFF};
-        }
-
-        b_leg: coverpoint B {
-            bins zeros = {'h00};
-            bins others= {['h01:'hFE]};
-            bins ones  = {'hFF};
-        }
-
-        op_00_FF: cross a_leg, b_leg, all_ops {
-            bins add_00             = binsof (all_ops) intersect {add_op} &&
-            (binsof (a_leg.zeros) || binsof (b_leg.zeros));
-
-            bins add_FF             = binsof (all_ops) intersect {add_op} &&
-            (binsof (a_leg.ones) || binsof (b_leg.ones));
-
-            bins and_00             = binsof (all_ops) intersect {and_op} &&
-            (binsof (a_leg.zeros) || binsof (b_leg.zeros));
-
-            bins and_FF             = binsof (all_ops) intersect {and_op} &&
-            (binsof (a_leg.ones) || binsof (b_leg.ones));
-
-            bins xor_00             = binsof (all_ops) intersect {xor_op} &&
-            (binsof (a_leg.zeros) || binsof (b_leg.zeros));
-
-            bins xor_FF             = binsof (all_ops) intersect {xor_op} &&
-            (binsof (a_leg.ones) || binsof (b_leg.ones));
-
-            bins mul_00             = binsof (all_ops) intersect {mul_op} &&
-            (binsof (a_leg.zeros) || binsof (b_leg.zeros));
-
-            bins mul_FF             = binsof (all_ops) intersect {mul_op} &&
-            (binsof (a_leg.ones) || binsof (b_leg.ones));
-
-            bins mul_max            = binsof (all_ops) intersect {mul_op} &&
-            (binsof (a_leg.ones) && binsof (b_leg.ones));
-
-            ignore_bins others_only =
-            binsof(a_leg.others) && binsof(b_leg.others);
-
-        }
-
-    endgroup
+endgroup
 
 //------------------------------------------------------------------------------
 // constructor
@@ -108,7 +88,7 @@ class coverage extends uvm_subscriber #(sequence_item);
 
     function new (string name, uvm_component parent);
         super.new(name, parent);
-        op_cov               = new();
+        dut_cov               = new();
         zeros_or_ones_on_ops = new();
     endfunction : new
 
@@ -117,11 +97,12 @@ class coverage extends uvm_subscriber #(sequence_item);
 //------------------------------------------------------------------------------
 
     function void write(sequence_item t);
-        A      = t.A;
-        B      = t.B;
-        op_set = t.op;
-        op_cov.sample();
-        zeros_or_ones_on_ops.sample();
+        arg_a = t.arg_a;
+		flag_arg_a_parity = t.flag_arg_a_parity;
+		arg_b = t.arg_b;        
+		flag_arg_b_parity = t.flag_arg_b_parity;
+        dut_cov.sample();
+	    zeros_or_ones_on_ops.sample();
     endfunction : write
 
 endclass : coverage

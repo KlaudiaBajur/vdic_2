@@ -20,7 +20,7 @@ class driver extends uvm_driver #(sequence_item);
 // local variables
 //------------------------------------------------------------------------------
 
-    protected virtual tinyalu_bfm bfm;
+    protected virtual mult_bfm bfm;
     
 //------------------------------------------------------------------------------
 // constructor
@@ -35,7 +35,7 @@ class driver extends uvm_driver #(sequence_item);
 //------------------------------------------------------------------------------
 
     function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual tinyalu_bfm)::get(null, "*","bfm", bfm))
+        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
             `uvm_fatal("DRIVER", "Failed to get BFM")
     endfunction : build_phase
     
@@ -49,10 +49,8 @@ class driver extends uvm_driver #(sequence_item);
         void'(begin_tr(cmd));
 
         forever begin : cmd_loop
-            shortint unsigned result;
             seq_item_port.get_next_item(cmd);
-            bfm.send_op(cmd.A, cmd.B, cmd.op, result);
-            cmd.result = result;
+            bfm.send_data(cmd.rst_n, cmd.arg_a, cmd.arg_a_parity, cmd.arg_b, cmd.arg_b_parity, cmd.flag_arg_a_parity, cmd.flag_arg_b_parity);
             seq_item_port.item_done();
         end : cmd_loop
 

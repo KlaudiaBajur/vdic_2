@@ -15,27 +15,24 @@
  */
 class scoreboard extends uvm_subscriber #(result_transaction);
     `uvm_component_utils(scoreboard)
-
+	
 //------------------------------------------------------------------------------
-// local typedefs
+// Local type definitions
 //------------------------------------------------------------------------------
-
-    typedef enum bit {
-        TEST_PASSED,
-        TEST_FAILED
-    } test_result;
-
+	protected typedef enum bit {
+	    TEST_PASSED,
+	    TEST_FAILED
+	} test_result_t;
+	
 //------------------------------------------------------------------------------
 // local variables
 //------------------------------------------------------------------------------
-
     uvm_tlm_analysis_fifo #(sequence_item) cmd_f;
-    local test_result tr = TEST_PASSED; // the result of the current test
+    local test_result_t test_result = TEST_PASSED; // the result of the current test
 
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
-
     function new (string name, uvm_component parent);
         super.new(name, parent);
     endfunction : new
@@ -43,96 +40,91 @@ class scoreboard extends uvm_subscriber #(result_transaction);
 //------------------------------------------------------------------------------
 // print the PASSED/FAILED in color
 //------------------------------------------------------------------------------
-    local function void print_test_result (test_result r);
-        if(tr == TEST_PASSED) begin
-            set_print_color(COLOR_BOLD_BLACK_ON_GREEN);
-            $write ("-----------------------------------\n");
-            $write ("----------- Test PASSED -----------\n");
-            $write ("-----------------------------------");
-            set_print_color(COLOR_DEFAULT);
-            $write ("\n");
-        end
-        else begin
-            set_print_color(COLOR_BOLD_BLACK_ON_RED);
-            $write ("-----------------------------------\n");
-            $write ("----------- Test FAILED -----------\n");
-            $write ("-----------------------------------");
-            set_print_color(COLOR_DEFAULT);
-            $write ("\n");
-        end
-    endfunction
+	local function void print_test_result (test_result_t test_result);
+	    if(test_result == TEST_PASSED) begin
+	        set_print_color(COLOR_BOLD_BLACK_ON_GREEN);
+	        $write ("-----------------------------------\n");
+	        $write ("----------- Test PASSED -----------\n");
+	        $write ("-----------------------------------");
+	        set_print_color(COLOR_DEFAULT);
+	        $write ("\n");
+	    end
+	    else begin
+	        set_print_color(COLOR_BOLD_BLACK_ON_RED);
+	        $write ("-----------------------------------\n");
+	        $write ("----------- Test FAILED -----------\n");
+	        $write ("-----------------------------------");
+	        set_print_color(COLOR_DEFAULT);
+	        $write ("\n");
+	    end
+	endfunction
 
 //------------------------------------------------------------------------------
 // build phase
 //------------------------------------------------------------------------------
-
     function void build_phase(uvm_phase phase);
         cmd_f = new ("cmd_f", this);
     endfunction : build_phase
 
-//------------------------------------------------------------------------------
-// report phase
-//------------------------------------------------------------------------------
-
-    function void report_phase(uvm_phase phase);
-        super.report_phase(phase);
-        `uvm_info("SELF CHECKTER", "Reporting test result below", UVM_LOW)
-        print_test_result(tr);
-    endfunction : report_phase
 
 //------------------------------------------------------------------------------
-// function to calculate the expected ALU result
+// Calculate expected results
 //------------------------------------------------------------------------------
-
-    local function result_transaction predict_result(sequence_item cmd);
+	local function result_transaction predict_results(sequence_item cmd);
         result_transaction predicted;
-
-        predicted = new("predicted");
-
-        case (cmd.op)
-            add_op: predicted.result = cmd.A + cmd.B;
-            and_op: predicted.result = cmd.A & cmd.B;
-            xor_op: predicted.result = cmd.A ^ cmd.B;
-            mul_op: predicted.result = cmd.A * cmd.B;
-        endcase // case (op_set)
-
-        return predicted;
-
-    endfunction : predict_result
+		
+		predicted = new("predicted");
+		if(cmd.arg_a_parity == ^cmd.arg_a && cmd.arg_b_parity == ^cmd.arg_b) begin
+			predicted.arg_parity_error = '0;	
+			predicted.result = cmd.arg_a*cmd.arg_b;
+		end
+		else begin
+			predicted.arg_parity_error = '1;
+			predicted.result = '0;
+		end
+		predicted.result_parity = ^predicted.result;
+		return predicted;
+		
+	endfunction
 
 //------------------------------------------------------------------------------
 // subscriber write function
 //------------------------------------------------------------------------------
-
     function void write(result_transaction t);
-        string data_str;
+	    string data_str;
         sequence_item cmd;
         result_transaction predicted;
-
-        do
+        
+        do begin
             if (!cmd_f.try_get(cmd))
                 $fatal(1, "Missing command in self checker");
-        while ((cmd.op == no_op) || (cmd.op == rst_op));
-
-        predicted = predict_result(cmd);
-
-        data_str  = { cmd.convert2string(),
-            " ==>  Actual " , t.convert2string(),
-            "/Predicted ",predicted.convert2string()};
+        end
+        while (cmd.rst_n == 0);	
+  
+        predicted = predict_results(cmd);
+        
+        data_str  = {cmd.convert2string(),
+            " ==>  Actual ", t.convert2string(),
+            "/Predicted ", predicted.convert2string()};
 
         if (!predicted.compare(t)) begin
-            `uvm_error("SELF CHECKER", {"FAIL: ",data_str})
-            tr = TEST_FAILED;
+            `uvm_error("SELF CHECKER", {"FAIL: ", data_str})
+            test_result = TEST_FAILED;
         end
         else
             `uvm_info ("SELF CHECKER", {"PASS: ", data_str}, UVM_HIGH)
-
     endfunction : write
-
+    
+//------------------------------------------------------------------------------
+// report phase
+//------------------------------------------------------------------------------
+    function void report_phase(uvm_phase phase);
+        super.report_phase(phase);
+        `uvm_info("SELF CHECKTER", "Reporting test result below", UVM_LOW)
+        print_test_result(test_result);
+    endfunction : report_phase
+    
+	
 endclass : scoreboard
-
-
-
-
 
 

@@ -1,0 +1,35 @@
+[INFO ] 2023-12-29 00:04:54,134 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 40416
+[ERROR] 2023-12-29 00:04:54,222 [com.cadence.mdv.messaging.MDVASynchronicMessaging] [frontend-pool-1] - Directory 'cov_work/scope/runall_test' not found. Verify the existence of the specified directory, and rerun the command
+[INFO ] 2024-01-02 01:20:54,115 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 39606
+[INFO ] 2024-01-02 01:20:58,953 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46858
+[INFO ] 2024-01-03 23:39:43,963 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 37883
+[INFO ] 2024-01-03 23:39:52,161 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 42789
+[INFO ] 2024-01-03 23:40:15,965 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 42761
+[INFO ] 2024-01-03 23:57:28,512 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 42660
+[INFO ] 2024-01-03 23:57:33,218 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46149
+[INFO ] 2024-01-03 23:59:37,214 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33899
+[INFO ] 2024-01-03 23:59:42,166 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 43829
+[INFO ] 2024-01-04 00:02:57,229 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 35457
+[INFO ] 2024-01-04 00:03:02,327 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46695
+[INFO ] 2024-01-04 00:05:21,902 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46883
+[INFO ] 2024-01-04 00:05:26,749 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 40990
+[INFO ] 2024-01-04 00:05:45,782 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 43310
+[INFO ] 2024-01-04 00:08:59,811 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33396
+[INFO ] 2024-01-04 00:09:04,466 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44039
+[INFO ] 2024-01-04 00:09:44,340 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33957
+[INFO ] 2024-01-04 00:09:49,107 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33963
+[INFO ] 2024-01-04 00:12:00,841 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46322
+[INFO ] 2024-01-04 00:12:05,772 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 35434
+[INFO ] 2024-01-04 00:12:59,639 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 39148
+[INFO ] 2024-01-04 00:18:11,442 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 37038
+[ERROR] 2024-01-04 00:18:11,539 [com.cadence.mdv.messaging.MDVASynchronicMessaging] [frontend-pool-1] - Directory 'cov_work/scope/runall_test' not found. Verify the existence of the specified directory, and rerun the command
+[INFO ] 2024-01-04 00:19:02,608 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44193
+[INFO ] 2024-01-04 00:19:07,742 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46105
+[INFO ] 2024-01-04 00:23:20,644 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 38579
+[ERROR] 2024-01-04 00:23:20,743 [com.cadence.mdv.messaging.MDVASynchronicMessaging] [frontend-pool-1] - Directory 'cov_work/scope/runall_test' not found. Verify the existence of the specified directory, and rerun the command
+[INFO ] 2024-01-04 00:25:22,048 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 36261
+[INFO ] 2024-01-04 00:25:26,907 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46062
+[INFO ] 2024-01-04 08:10:18,994 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33167
+[INFO ] 2024-01-04 08:10:24,472 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 34582
+[INFO ] 2024-01-04 08:13:25,782 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 42977
+[INFO ] 2024-01-04 08:13:31,258 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 39815

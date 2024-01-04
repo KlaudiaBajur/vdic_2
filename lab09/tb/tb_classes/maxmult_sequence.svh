@@ -15,40 +15,43 @@
  */
 class maxmult_sequence extends uvm_sequence #(sequence_item);
     `uvm_object_utils(maxmult_sequence)
-
+    
 //------------------------------------------------------------------------------
 // local variables
 //------------------------------------------------------------------------------
-
 // not necessary, req is inherited
-//    sequence_item req;
+//    add_sequence_item req;
 
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
-
     function new(string name = "maxmult_sequence");
         super.new(name);
     endfunction : new
-    
+
 //------------------------------------------------------------------------------
 // the sequence body
 //------------------------------------------------------------------------------
-
     task body();
-        `uvm_info("SEQ_MAXMULT", "", UVM_MEDIUM)
-//      req = sequence_item::type_id::create("req");
-//      start_item(req);
-//      req.op = mul_op;
-//      req.A = 8'hFF;
-//      req.B = 8'hFF;
-//      finish_item(req);
-        `uvm_do_with(req, {op == mul_op; A == 8'hFF; B == 8'hFF;})
-        `uvm_do_with(req, {op == rst_op;} )
-        `uvm_do_with(req, {op == mul_op;} )
-        `uvm_do_with(req, {op == mul_op;} )
-        `uvm_do_with(req, {op == rst_op;} )
+        `uvm_info("SEQ_MIN_MAX", "", UVM_MEDIUM)
+        
+        `uvm_create(req);
+        repeat (1000) begin
+//            req = add_sequence_item::type_id::create("req");
+//            start_item(req);
+//            assert(req.randomize());
+//            finish_item(req);
+            `uvm_rand_send_with(req, {
+			    arg_a dist {16'sh8000:=1, 16'sh7FFF:=1};
+		        arg_b dist {16'sh8000:=1, 16'sh7FFF:=1};
+			});
+//            req.print();
+        end
+        req.rst_n = 1;
+        //req.flag_arg_a_parity = 1'b0;
+        //req.flag_arg_b_parity = 1'b1;
+        `uvm_rand_send(req)
     endtask : body
     
-
+    
 endclass : maxmult_sequence

@@ -22,7 +22,7 @@
 # The list of tests; in GUI mode only the first test is started.
 # TESTS=(random_test add_test);
 # TESTS=(dual_test);
-TESTS=(runall_test parallel_test fibonacci_test);
+TESTS=(runall_test);
 #------------------------------------------------------------------------------
 # Default .f file
 FFILE="../tb/tb.f"

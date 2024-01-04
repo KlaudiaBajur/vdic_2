@@ -19,23 +19,18 @@ class runall_sequence extends uvm_sequence #(uvm_sequence_item);
 //------------------------------------------------------------------------------
 // local variables
 //------------------------------------------------------------------------------
-
     local sequencer sequencer_h;
     local uvm_component uvm_component_h;
 
 //------------------------------------------------------------------------------
 // sequences to run
-//------------------------------------------------------------------------------
-
-    local reset_sequence reset;
-    local maxmult_sequence maxmult;
+//------------------------------------------------------------------------------t;
     local random_sequence random;
-    local add_sequence add;
+    local maxmult_sequence min_max;
 
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
-
     function new(string name = "runall_sequence");
         super.new(name);
 
@@ -50,22 +45,17 @@ class runall_sequence extends uvm_sequence #(uvm_sequence_item);
         if (!$cast(sequencer_h, uvm_component_h))
             `uvm_fatal("RUNALL_SEQUENCE", "Failed to cast from uvm_component_h.")
 
-        reset           = reset_sequence::type_id::create("reset");
-        maxmult         = maxmult_sequence::type_id::create("maxmult");
-        random          = random_sequence::type_id::create("random");
-        add             = add_sequence::type_id::create("add");
+        random = random_sequence::type_id::create("random");
+        min_max = maxmult_sequence::type_id::create("min_max");
     endfunction : new
 
 //------------------------------------------------------------------------------
 // the sequence body
 //------------------------------------------------------------------------------
-
     task body();
-        `uvm_info("SEQ_RUNALL","",UVM_MEDIUM)
-        reset.start(sequencer_h);
-        maxmult.start(sequencer_h);
+        `uvm_info("SEQ_RUNALL", "", UVM_MEDIUM)
         random.start(sequencer_h);
-        add.start(sequencer_h);
+        min_max.start(sequencer_h);
     endtask : body
 
 
